@@ -1,84 +1,120 @@
 import streamlit as st
-from google.cloud import bigquery
-import pandas as pd
+import requests
+from google.cloud import storage
+import google.auth.transport.requests
+import google.oauth2.id_token
 import os
 
-# --- CONFIGURATION ---
-APP_PASSWORD = os.environ.get("APP_PASSWORD", "default_dev_password")
-PROJECT_ID = os.environ.get("PROJECT_ID", "your-gcp-project-id") 
+# --- CONFIG ---
+FUNCTION_URL = os.environ.get("FUNCTION_URL")
+BUCKET_NAME = os.environ.get("BUCKET_NAME")
+APP_PASSWORD = os.environ.get("APP_PASSWORD")
 
-# --- LOGIN ---
-def check_password():
-    if st.session_state.get("password_correct", False):
-        return True
-    st.sidebar.header("Login")
-    password = st.sidebar.text_input("Password", type="password")
-    if password == APP_PASSWORD:
-        st.session_state["password_correct"] = True
-        st.rerun()
-    elif password:
-        st.sidebar.error("Incorrect password.")
-    return False
-
-if not check_password():
+if not FUNCTION_URL or not BUCKET_NAME or not APP_PASSWORD:
+    st.error("Configuration Error: Environment variables are missing.")
     st.stop()
 
-# --- BIGQUERY CONNECTION ---
-@st.cache_resource
-def get_bq_client():
-    return bigquery.Client(project=PROJECT_ID)
+# --- AUTHENTICATION ---
+with st.sidebar:
+    st.header("Login")
+    password = st.text_input("Password", type="password")
 
-@st.cache_data(ttl=3600)
-def fetch_data():
-    client = get_bq_client()
-    query = """
-        SELECT *
-        FROM `jarrah-freshbooks.marketing_performance.campaign_performance__in_period`
-        ORDER BY conversion_date DESC
-    """
-    return client.query(query).to_dataframe()
+if password != APP_PASSWORD:
+    st.info("Please enter the password to access the tool.")
+    st.stop()
 
-# --- MAIN LAYOUT & REPORTING ---
-st.title("Campaign Performance Dashboard")
+# --- MAIN APP ---
+st.title("Professional Extractor Tool")
 
-with st.spinner("Fetching data..."):
-    try:
-        df = fetch_data()
+# ----------------- PART 1: RUN NEW EXTRACTION -----------------
+st.subheader("Run New Extraction")
+zip_code = st.text_input("Enter Zip Code", placeholder="H1M 3K9")
+
+if st.button("Run Extraction", type="primary"):
+    if not zip_code:
+        st.warning("Please enter a zip code.")
+    else:
+        with st.spinner(f"Processing {zip_code}... (this might take a minute)"):
+            try:
+                # 1. Get Auth Token
+                auth_req = google.auth.transport.requests.Request()
+                id_token = google.oauth2.id_token.fetch_id_token(auth_req, FUNCTION_URL)
+                
+                # 2. Call Function
+                headers = {"Authorization": f"Bearer {id_token}"}
+                response = requests.post(
+                    FUNCTION_URL, 
+                    json={"zip_code": zip_code}, 
+                    headers=headers
+                )
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    filename = data.get("filename")
+
+                    if filename:
+                        st.success(f"Extraction complete: {filename}")
+                        
+                        # Direct download for the just-finished run
+                        client = storage.Client()
+                        bucket = client.bucket(BUCKET_NAME)
+                        blob = bucket.blob(filename)
+                        
+                        if blob.exists():
+                            st.download_button(
+                                label="Download Results Now",
+                                data=blob.download_as_bytes(),
+                                file_name=filename,
+                                mime="text/csv",
+                                key="download_new"
+                            )
+                    else:
+                        st.warning("No filename returned.")
+                elif response.status_code == 403:
+                    st.error("Error 403: Permission Denied.")
+                else:
+                    st.error(f"Error {response.status_code}: {response.text}")
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
+
+# ----------------- PART 2: DOWNLOAD HISTORY -----------------
+st.divider()
+st.subheader("Previous Extractions")
+
+try:
+    # 1. List files in bucket
+    client = storage.Client()
+    blobs = list(client.list_blobs(BUCKET_NAME))
+    
+    if not blobs:
+        st.info("No previous extractions found.")
+    else:
+        # Sort by time (newest first)
+        blobs.sort(key=lambda x: x.updated, reverse=True)
         
-        df['conversion_date'] = pd.to_datetime(df['conversion_date'])
+        # Create a nice list of names for the dropdown
+        # key is the friendly name, value is the blob object
+        blob_options = {f"{b.name} ({b.updated.strftime('%Y-%m-%d %H:%M')})": b for b in blobs}
         
-        # --- FILTERS ---
-        st.sidebar.header("Filters")
-        campaigns = st.sidebar.multiselect("Filter by Campaign", options=df['campaign'].dropna().unique())
+        selected_option = st.selectbox(
+            "Select a file to download:",
+            options=blob_options.keys()
+        )
         
-        filtered_df = df.copy()
-        if campaigns:
-            filtered_df = filtered_df[filtered_df['campaign'].isin(campaigns)]
-
-        # --- KPIs ---
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Total Trials", f"{filtered_df['trials'].sum():,.0f}")
-        col2.metric("Total Upgrades", f"{filtered_df['total_upgrades'].sum():,.0f}")
-        col3.metric("Total MRR", f"${filtered_df['upgrade_GNMRR'].sum():,.2f}")
-
-        st.divider()
-
-        # --- TABS ---
-        tab1, tab2, tab3 = st.tabs(["Trends", "Campaign Breakdown", "Raw Data"])
-        
-        with tab1:
-            st.subheader("Trials & Upgrades Over Time")
-            daily_data = filtered_df.groupby('conversion_date')[['trials', 'total_upgrades']].sum().reset_index()
-            st.line_chart(daily_data, x='conversion_date', y=['trials', 'total_upgrades'])
+        # 2. Download Selected File Logic
+        if selected_option:
+            selected_blob = blob_options[selected_option]
             
-        with tab2:
-            st.subheader("Upgrades by Campaign")
-            campaign_data = filtered_df.groupby('campaign')['total_upgrades'].sum().reset_index()
-            st.bar_chart(campaign_data, x='campaign', y='total_upgrades')
-
-        with tab3:
-            st.subheader("Raw Data")
-            st.dataframe(filtered_df, use_container_width=True)
+            # We download bytes into memory only when selected to save bandwidth
+            file_bytes = selected_blob.download_as_bytes()
             
-    except Exception as e:
-        st.error(f"Failed to load dashboard: {e}")
+            st.download_button(
+                label=f"Download {selected_blob.name}",
+                data=file_bytes,
+                file_name=selected_blob.name,
+                mime="text/csv",
+                key="download_history" # Unique key is required
+            )
+
+except Exception as e:
+    st.error(f"Could not load history: {e}")
