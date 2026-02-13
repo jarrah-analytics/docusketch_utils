@@ -15,12 +15,18 @@ if not FUNCTION_URL or not BUCKET_NAME or not APP_PASSWORD:
     st.error("Config Error: Missing Environment Variables.")
     st.stop()
 
-# --- LOGIN ---
+# --- LOGIN & SETTINGS ---
 with st.sidebar:
     st.header("Login")
     if st.text_input("Password", type="password") != APP_PASSWORD:
         st.info("Enter password to access.")
         st.stop()
+    
+    st.divider()
+    st.header("Search Settings")
+    # New sliders for dynamic control
+    radius = st.slider("Search Radius (meters)", 1000, 50000, 8000, step=1000, help="5000m is approx 3 miles")
+    max_queries = st.number_input("Max Serper Queries", 10, 1000, 200)
 
 # --- MAIN LAYOUT ---
 st.title("Professional Extractor Tool")
@@ -42,9 +48,14 @@ with tab1:
                     auth_req = google.auth.transport.requests.Request()
                     id_token = google.oauth2.id_token.fetch_id_token(auth_req, FUNCTION_URL)
                     
+                    # Updated payload with radius and max_queries
                     response = requests.post(
                         FUNCTION_URL, 
-                        json={"zip_code": zip_code}, 
+                        json={
+                            "zip_code": zip_code,
+                            "radius": radius,
+                            "max_queries": max_queries
+                        }, 
                         headers={"Authorization": f"Bearer {id_token}"}
                     )
                     
@@ -69,7 +80,7 @@ with tab1:
                                     key="download_new"
                                 )
                         else:
-                            st.warning("No filename returned.")
+                            st.warning(data.get("message", "No filename returned."))
                     else:
                         st.error(f"Error {response.status_code}: {response.text}")
                 except Exception as e:
@@ -85,11 +96,8 @@ with tab1:
         if not blobs:
             st.info("No history found.")
         else:
-            # Sort newest first
             blobs.sort(key=lambda x: x.updated, reverse=True)
-            
             blob_options = {f"{b.name} ({b.updated.strftime('%Y-%m-%d %H:%M')})": b for b in blobs}
-            
             selected = st.selectbox("Select file to download:", options=blob_options.keys())
             
             if selected:
@@ -109,7 +117,6 @@ with tab2:
     st.header("Extreme Weather Tracker")
     st.write("View active weather patterns below to help target zip codes.")
     
-    # Windy.com Embed (Rain overlay)
     components.iframe(
         src="https://embed.windy.com/embed2.html?lat=40.0&lon=-95.0&detailLat=40.0&detailLon=-95.0&width=650&height=450&zoom=3&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1",
         height=600,
