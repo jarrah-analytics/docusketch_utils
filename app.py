@@ -21,12 +21,25 @@ with st.sidebar:
     if st.text_input("Password", type="password") != APP_PASSWORD:
         st.info("Enter password to access.")
         st.stop()
-    
+
     st.divider()
     st.header("Search Settings")
-    # New sliders for dynamic control
-    radius = st.slider("Search Radius (meters)", 1000, 50000, 8000, step=1000, help="5000m is approx 3 miles")
-    max_queries = st.number_input("Max Serper Queries", 10, 1000, 200)
+
+    radius = st.slider(
+        "Search Radius (meters)",
+        1000, 50000, 8000,
+        step=1000,
+        help="5000m is approx 3 miles",
+    )
+
+    # companies returned from Places
+    max_companies = st.number_input(
+        "Max Companies (Places)",
+        min_value=10,
+        max_value=500,
+        value=200,
+        step=10
+    )
 
 # --- MAIN LAYOUT ---
 st.title("Professional Extractor Tool")
@@ -44,41 +57,41 @@ with tab1:
         else:
             with st.spinner(f"Processing {zip_code}..."):
                 try:
-                    # Auth & Request
                     auth_req = google.auth.transport.requests.Request()
                     id_token = google.oauth2.id_token.fetch_id_token(auth_req, FUNCTION_URL)
-                    
-                    # Updated payload with radius and max_queries
+
                     response = requests.post(
-                        FUNCTION_URL, 
+                        FUNCTION_URL,
                         json={
                             "zip_code": zip_code,
                             "radius": radius,
-                            "max_queries": max_queries
-                        }, 
-                        headers={"Authorization": f"Bearer {id_token}"}
+                            "max_companies": int(max_companies),
+                        },
+                        headers={"Authorization": f"Bearer {id_token}"},
+                        timeout=120,
                     )
-                    
+
                     if response.status_code == 200:
                         data = response.json()
                         filename = data.get("filename")
-                        
+
                         if filename:
                             st.success(f"Success! Created: {filename}")
-                            
-                            # Download
+
                             client = storage.Client()
                             bucket = client.bucket(BUCKET_NAME)
                             blob = bucket.blob(filename)
-                            
+
                             if blob.exists():
                                 st.download_button(
                                     label="Download Results Now",
                                     data=blob.download_as_bytes(),
                                     file_name=filename,
                                     mime="text/csv",
-                                    key="download_new"
+                                    key="download_new",
                                 )
+                            else:
+                                st.warning("File was created but not found in bucket yet.")
                         else:
                             st.warning(data.get("message", "No filename returned."))
                     else:
@@ -92,14 +105,14 @@ with tab1:
     try:
         client = storage.Client()
         blobs = list(client.list_blobs(BUCKET_NAME))
-        
+
         if not blobs:
             st.info("No history found.")
         else:
             blobs.sort(key=lambda x: x.updated, reverse=True)
             blob_options = {f"{b.name} ({b.updated.strftime('%Y-%m-%d %H:%M')})": b for b in blobs}
             selected = st.selectbox("Select file to download:", options=blob_options.keys())
-            
+
             if selected:
                 blob = blob_options[selected]
                 st.download_button(
@@ -107,7 +120,7 @@ with tab1:
                     data=blob.download_as_bytes(),
                     file_name=blob.name,
                     mime="text/csv",
-                    key="download_history"
+                    key="download_history",
                 )
     except Exception as e:
         st.error(f"Could not load history: {e}")
@@ -116,9 +129,9 @@ with tab1:
 with tab2:
     st.header("Extreme Weather Tracker")
     st.write("View active weather patterns below to help target zip codes.")
-    
+
     components.iframe(
         src="https://embed.windy.com/embed2.html?lat=40.0&lon=-95.0&detailLat=40.0&detailLon=-95.0&width=650&height=450&zoom=3&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1",
         height=600,
-        scrolling=False
+        scrolling=False,
     )
