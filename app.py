@@ -61,6 +61,7 @@ def render_run_result(data: dict):
         "mode": mode,
         "rows_saved": rows_saved,
         "target_new_requested": data.get("target_new_requested"),
+        "use_linkedin": data.get("use_linkedin"),
         "index_key": data.get("index_key"),
         "index_blob": data.get("index_blob"),
         "index_saved": data.get("index_saved"),
@@ -97,7 +98,7 @@ def render_run_result(data: dict):
 
 
 # --- MAIN LAYOUT ---
-st.title("Lead/Company Extraction Tool")
+st.title("Professional Extractor Tool")
 
 tab1, tab2 = st.tabs(["Extraction Tool", "Live Weather Map"])
 
@@ -137,6 +138,12 @@ with tab1:
         help="Each page can return up to 20 Places results.",
     )
 
+    use_linkedin = st.checkbox(
+        "Find LinkedIn company via Serper",
+        value=True,
+        help="If off, the backend will skip Serper and LinkedInCompany will be N/A.",
+    )
+
     if mode == "zip":
         zip_code = st.text_input("Enter Zip / Postal Code", placeholder="78701 or H1M 3K9")
         radius = st.number_input(
@@ -161,6 +168,7 @@ with tab1:
                             "places_results": int(places_results),
                             "text_query": text_query.strip(),
                             "max_pages_per_cell": int(max_pages_per_cell),
+                            "use_linkedin": bool(use_linkedin),
                         }
 
                         resp = call_backend(token, payload)
@@ -228,6 +236,7 @@ with tab1:
                             "places_results": int(places_results),
                             "text_query": text_query.strip(),
                             "max_pages_per_cell": int(max_pages_per_cell),
+                            "use_linkedin": bool(use_linkedin),
                         }
 
                         if index_key.strip():
