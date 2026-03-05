@@ -267,6 +267,7 @@ with tab1:
 
         # Show only CSV result files in history
         blobs = [b for b in blobs if b.name.lower().endswith(".csv")]
+        blobs = [b for b in blobs if b.name.startswith("leads_") and not b.name.startswith("dev/")]
 
         if not blobs:
             st.info("No history found.")
