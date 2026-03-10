@@ -2,3 +2,5 @@ streamlit
 requests
 google-cloud-storage
 google-auth
+pydeck
+pandas
