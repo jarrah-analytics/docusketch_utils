@@ -1,5 +1,4 @@
 import os
-import math
 import requests
 import pandas as pd
 import pydeck as pdk
@@ -13,9 +12,8 @@ import google.oauth2.id_token
 FUNCTION_URL = os.environ.get("FUNCTION_URL")
 BUCKET_NAME = os.environ.get("BUCKET_NAME")
 APP_PASSWORD = os.environ.get("APP_PASSWORD")
-PLACES_API_KEY = os.environ.get("PLACES_API_KEY")
 
-if not FUNCTION_URL or not BUCKET_NAME or not APP_PASSWORD or not PLACES_API_KEY:
+if not FUNCTION_URL or not BUCKET_NAME or not APP_PASSWORD:
     st.error("Config Error: Missing environment variables.")
     st.stop()
 
@@ -50,100 +48,8 @@ def download_blob_bytes(bucket_name: str, blob_name: str):
         return None
     return None
 
-# --- CITY GRID PREVIEW HELPERS ---
-def normalize_viewport(viewport):
-    low_lat = min(viewport["low"]["latitude"], viewport["high"]["latitude"])
-    high_lat = max(viewport["low"]["latitude"], viewport["high"]["latitude"])
-    low_lng = min(viewport["low"]["longitude"], viewport["high"]["longitude"])
-    high_lng = max(viewport["low"]["longitude"], viewport["high"]["longitude"])
-    return {
-        "low": {"latitude": low_lat, "longitude": low_lng},
-        "high": {"latitude": high_lat, "longitude": high_lng},
-    }
-
-def rectangle_from_center_radius(lat: float, lng: float, radius_m: float):
-    lat_delta = radius_m / 111320.0
-    cos_lat = max(0.000001, math.cos(math.radians(lat)))
-    lng_delta = radius_m / (111320.0 * cos_lat)
-    return {
-        "low": {"latitude": lat - lat_delta, "longitude": lng - lng_delta},
-        "high": {"latitude": lat + lat_delta, "longitude": lng + lng_delta},
-    }
-
-def split_viewport_into_grid(viewport, rows: int, cols: int):
-    viewport = normalize_viewport(viewport)
-    low_lat = viewport["low"]["latitude"]
-    high_lat = viewport["high"]["latitude"]
-    low_lng = viewport["low"]["longitude"]
-    high_lng = viewport["high"]["longitude"]
-
-    lat_step = (high_lat - low_lat) / rows
-    lng_step = (high_lng - low_lng) / cols
-
-    cells = []
-    for r in range(rows):
-        for c in range(cols):
-            cell = {
-                "low": {
-                    "latitude": low_lat + (r * lat_step),
-                    "longitude": low_lng + (c * lng_step),
-                },
-                "high": {
-                    "latitude": low_lat + ((r + 1) * lat_step),
-                    "longitude": low_lng + ((c + 1) * lng_step),
-                },
-            }
-            cells.append(cell)
-
-    # center-first ordering to match backend
-    def cell_center_dist(cell):
-        clat = (cell["low"]["latitude"] + cell["high"]["latitude"]) / 2
-        clng = (cell["low"]["longitude"] + cell["high"]["longitude"]) / 2
-        vlat = (low_lat + high_lat) / 2
-        vlng = (low_lng + high_lng) / 2
-        return ((clat - vlat) ** 2) + ((clng - vlng) ** 2)
-
-    cells.sort(key=cell_center_dist)
-    return cells
-
-def geocode_city_for_preview(city: str, state: str, country: str, api_key: str):
-    address = ", ".join([p for p in [city, state, country] if p and str(p).strip()])
-    url = "https://maps.googleapis.com/maps/api/geocode/json"
-
-    r = requests.get(url, params={"address": address, "key": api_key}, timeout=20)
-    data = r.json()
-    results = data.get("results", []) or []
-    if not results:
-        return None
-
-    first = results[0]
-    loc = first["geometry"]["location"]
-    viewport = first["geometry"].get("viewport")
-
-    out = {
-        "lat": loc["lat"],
-        "lng": loc["lng"],
-        "viewport": None,
-    }
-
-    if viewport:
-        out["viewport"] = {
-            "low": {
-                "latitude": viewport["southwest"]["lat"],
-                "longitude": viewport["southwest"]["lng"],
-            },
-            "high": {
-                "latitude": viewport["northeast"]["lat"],
-                "longitude": viewport["northeast"]["lng"],
-            },
-        }
-
-    if not out["viewport"]:
-        out["viewport"] = rectangle_from_center_radius(out["lat"], out["lng"], 12000)
-
-    return out
-
-def render_city_grid_map(geocoded, cells):
+# --- MAP RENDERING ---
+def render_city_grid_map(map_center, cells):
     polygons = []
     labels = []
 
@@ -169,17 +75,14 @@ def render_city_grid_map(geocoded, cells):
             "lng": (low_lng + high_lng) / 2,
         })
 
-    poly_df = pd.DataFrame(polygons)
-    label_df = pd.DataFrame(labels)
-
     polygon_layer = pdk.Layer(
         "PolygonLayer",
-        data=poly_df,
+        data=pd.DataFrame(polygons),
         get_polygon="polygon",
         stroked=True,
         filled=True,
         extruded=False,
-        get_fill_color=[0, 0, 255, 40],
+        get_fill_color=[0, 0, 255, 30],
         get_line_color=[0, 0, 0, 180],
         line_width_min_pixels=2,
         pickable=True,
@@ -187,7 +90,7 @@ def render_city_grid_map(geocoded, cells):
 
     text_layer = pdk.Layer(
         "TextLayer",
-        data=label_df,
+        data=pd.DataFrame(labels),
         get_position="[lng, lat]",
         get_text="cell_number",
         get_size=16,
@@ -195,15 +98,13 @@ def render_city_grid_map(geocoded, cells):
         pickable=False,
     )
 
-    view_state = pdk.ViewState(
-        latitude=geocoded["lat"],
-        longitude=geocoded["lng"],
-        zoom=10,
-    )
-
     deck = pdk.Deck(
         layers=[polygon_layer, text_layer],
-        initial_view_state=view_state,
+        initial_view_state=pdk.ViewState(
+            latitude=map_center["lat"],
+            longitude=map_center["lng"],
+            zoom=10,
+        ),
         tooltip={"text": "Cell {cell_number}"},
     )
 
@@ -240,6 +141,11 @@ def render_run_result(data: dict):
         st.success(f"Success! Created: {filename}")
         st.json(stats)
 
+        # show grid map after successful city extraction too
+        if data.get("mode") == "city" and data.get("grid_cells") and data.get("map_center"):
+            st.write("City grid used for this run:")
+            render_city_grid_map(data["map_center"], data["grid_cells"])
+
         file_bytes = download_blob_bytes(BUCKET_NAME, filename)
         if file_bytes:
             st.download_button(
@@ -255,6 +161,10 @@ def render_run_result(data: dict):
         st.info(message or "No results.")
         if stats:
             st.json(stats)
+
+        if data.get("mode") == "city" and data.get("grid_cells") and data.get("map_center"):
+            st.write("City grid:")
+            render_city_grid_map(data["map_center"], data["grid_cells"])
 
 # --- APP ---
 st.title("Professional Extractor Tool")
@@ -363,26 +273,38 @@ with tab1:
             if not city:
                 st.warning("City required.")
             else:
-                try:
-                    geocoded = geocode_city_for_preview(
-                        city=city.strip(),
-                        state=state.strip(),
-                        country=country.strip(),
-                        api_key=PLACES_API_KEY,
-                    )
+                with st.spinner(f"Building grid preview for {city}..."):
+                    token = fetch_id_token()
+                    payload = {
+                        "mode": "city",
+                        "city": city.strip(),
+                        "state": state.strip(),
+                        "country": country.strip(),
+                        "grid_rows": int(grid_rows),
+                        "grid_cols": int(grid_cols),
+                        "preview_only": True,
+                    }
 
-                    if not geocoded:
-                        st.error("Could not geocode city.")
+                    if index_key.strip():
+                        payload["index_key"] = index_key.strip()
+
+                    resp = call_backend(token, payload)
+                    try:
+                        data = resp.json()
+                    except Exception:
+                        data = {}
+
+                    if resp.status_code == 200:
+                        if data.get("grid_cells") and data.get("map_center"):
+                            st.write("Grid preview (numbered in search order):")
+                            render_city_grid_map(data["map_center"], data["grid_cells"])
+                        else:
+                            st.error("Backend did not return grid data.")
                     else:
-                        cells = split_viewport_into_grid(
-                            geocoded["viewport"],
-                            rows=int(grid_rows),
-                            cols=int(grid_cols),
+                        st.error(
+                            f"Error {resp.status_code}: "
+                            f"{data.get('message') if isinstance(data, dict) else resp.text}"
                         )
-                        st.write("Grid preview (numbered in search order):")
-                        render_city_grid_map(geocoded, cells)
-                except Exception as e:
-                    st.error(f"Could not preview grid: {e}")
 
         if st.button("Run City Extraction", type="primary"):
             if not city:
@@ -448,7 +370,7 @@ with tab2:
     st.header("Extreme Weather Tracker")
     st.write("View active weather patterns below to help target areas.")
     components.iframe(
-        src="https://embed.windy.com/embed2.html?lat=40.0&lon=-95.0&detailLat=40.0&detailLon=40.0&width=650&height=450&zoom=3&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1",
+        src="https://embed.windy.com/embed2.html?lat=40.0&lon=-95.0&detailLat=40.0&detailLon=-95.0&width=650&height=450&zoom=3&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1",
         height=600,
         scrolling=False,
     )
