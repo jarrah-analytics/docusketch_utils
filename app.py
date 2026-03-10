@@ -132,8 +132,7 @@ def render_run_result(data: dict):
         "duplicates_blocked_by_index": data.get("duplicates_blocked_by_index"),
         "filtered_out": data.get("filtered_out"),
         "serper_queries_used": data.get("serper_queries_used"),
-        "grid_rows": data.get("grid_rows"),
-        "grid_cols": data.get("grid_cols"),
+        "coverage_scale": data.get("coverage_scale"),
     }
     stats = {k: v for k, v in stats.items() if v is not None}
 
@@ -141,7 +140,6 @@ def render_run_result(data: dict):
         st.success(f"Success! Created: {filename}")
         st.json(stats)
 
-        # show grid map after successful city extraction too
         if data.get("mode") == "city" and data.get("grid_cells") and data.get("map_center"):
             st.write("City grid used for this run:")
             render_city_grid_map(data["map_center"], data["grid_cells"])
@@ -186,7 +184,7 @@ with tab1:
         max_value=200,
         value=30,
         step=1,
-        help="Returns up to this many total results (mix of existing + new). Only new ones are added to the index.",
+        help="Returns up to this many total results.",
     )
 
     text_query = st.text_input(
@@ -195,19 +193,10 @@ with tab1:
         help="The Places Text Search query sent to Google.",
     )
 
-    max_pages_per_cell = st.number_input(
-        "Max pages per search cell",
-        min_value=1,
-        max_value=5,
-        value=3,
-        step=1,
-        help="Each page can return up to 20 Places results.",
-    )
-
     use_linkedin = st.checkbox(
         "Find LinkedIn company via Serper (new results only)",
-        value=True,
-        help="If off, LinkedInCompany will be N/A. If on, Serper runs only for new (not-in-index) rows.",
+        value=False,
+        help="If off, LinkedInCompany will be N/A. If on, Serper runs only for new rows.",
     )
 
     if mode == "zip":
@@ -232,9 +221,9 @@ with tab1:
                         "radius": int(radius),
                         "places_results": int(places_results),
                         "text_query": text_query.strip(),
-                        "max_pages_per_cell": int(max_pages_per_cell),
                         "use_linkedin": bool(use_linkedin),
                     }
+
                     resp = call_backend(token, payload)
                     try:
                         data = resp.json()
@@ -257,11 +246,14 @@ with tab1:
         with col2:
             country = st.text_input("Country", value="USA")
 
-        col3, col4 = st.columns(2)
-        with col3:
-            grid_rows = st.number_input("Grid Rows", min_value=1, max_value=6, value=3, step=1)
-        with col4:
-            grid_cols = st.number_input("Grid Columns", min_value=1, max_value=6, value=3, step=1)
+        coverage_scale = st.number_input(
+            "Coverage Scale",
+            min_value=0.25,
+            max_value=3.0,
+            value=1.0,
+            step=0.25,
+            help="1.0 = default city viewport. Lower searches a tighter area. Higher searches a wider area.",
+        )
 
         index_key = st.text_input(
             "Index Key (optional)",
@@ -280,8 +272,7 @@ with tab1:
                         "city": city.strip(),
                         "state": state.strip(),
                         "country": country.strip(),
-                        "grid_rows": int(grid_rows),
-                        "grid_cols": int(grid_cols),
+                        "coverage_scale": float(coverage_scale),
                         "preview_only": True,
                     }
 
@@ -317,13 +308,12 @@ with tab1:
                         "city": city.strip(),
                         "state": state.strip(),
                         "country": country.strip(),
-                        "grid_rows": int(grid_rows),
-                        "grid_cols": int(grid_cols),
+                        "coverage_scale": float(coverage_scale),
                         "places_results": int(places_results),
                         "text_query": text_query.strip(),
-                        "max_pages_per_cell": int(max_pages_per_cell),
                         "use_linkedin": bool(use_linkedin),
                     }
+
                     if index_key.strip():
                         payload["index_key"] = index_key.strip()
 
