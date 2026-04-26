@@ -24,7 +24,19 @@ BQ_PROJECT_ID = os.environ.get("BQ_PROJECT_ID", "ds-data-warehouse")
 BQ_DATASET = os.environ.get("BQ_DATASET", "landing__metro_area_leads")
 BQ_MASTER_VIEW = os.environ.get("BQ_MASTER_VIEW", "metro_master_current")
 
-APP_ROOT = Path(__file__).resolve().parent.parent
+def resolve_app_root() -> Path:
+    here = Path(__file__).resolve()
+    candidates = [
+        here.parent.parent,
+        here.parent,
+    ]
+    for candidate in candidates:
+        if (candidate / "US_Metropolitan_Statistical_Areas - MSA Master List.csv").exists():
+            return candidate
+    return here.parent
+
+
+APP_ROOT = resolve_app_root()
 METRO_CSV_PATH = APP_ROOT / "US_Metropolitan_Statistical_Areas - MSA Master List.csv"
 LOCAL_OUTPUTS_DIR = APP_ROOT / "local_outputs"
 DEFAULT_GCP_CREDENTIALS_PATH = APP_ROOT / "ds-data-warehouse-0b4e47d880af.json"
