@@ -1,6 +1,9 @@
 streamlit
 requests
 google-cloud-storage
+google-cloud-bigquery
 google-auth
 pydeck
 pandas
+db-dtypes
+pyshp
