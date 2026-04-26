@@ -23,6 +23,7 @@ LOCAL_BACKEND_URL = os.environ.get("LOCAL_BACKEND_URL", "").strip()
 BQ_PROJECT_ID = os.environ.get("BQ_PROJECT_ID", "ds-data-warehouse")
 BQ_DATASET = os.environ.get("BQ_DATASET", "landing__metro_area_leads")
 BQ_MASTER_VIEW = os.environ.get("BQ_MASTER_VIEW", "metro_master_current")
+BQ_PDL_TABLE = os.environ.get("BQ_PDL_TABLE", "pdl_people_matches_raw")
 
 def resolve_app_root() -> Path:
     here = Path(__file__).resolve()
@@ -356,7 +357,45 @@ def flatten_pdl_people_results(payload: dict, cbsa_code: str):
     return pd.DataFrame(rows)
 
 
+@st.cache_data(show_spinner=False)
+def load_pdl_people_matches_bq(cbsa_code: str):
+    client = get_bigquery_client()
+    if client is None:
+        return pd.DataFrame()
+
+    sql = f"""
+        SELECT
+          source_company_name AS company_name,
+          source_company_website AS company_website,
+          matched_company_name,
+          matched_company_id,
+          matched_company_size,
+          matched_company_industry,
+          person_full_name AS full_name,
+          person_job_title AS job_title,
+          person_job_company_name AS job_company_name,
+          person_job_company_website AS job_company_website,
+          person_location_country AS location_country,
+          person_linkedin_url AS linkedin_url,
+          person_work_email AS work_email,
+          person_mobile_phone AS mobile_phone,
+          source_file_name,
+          uploaded_at_utc
+        FROM `{BQ_PROJECT_ID}.{BQ_DATASET}.{BQ_PDL_TABLE}`
+        WHERE cbsa_code = @cbsa_code
+        ORDER BY source_company_name, person_full_name
+    """
+    job_config = bigquery.QueryJobConfig(
+        query_parameters=[bigquery.ScalarQueryParameter("cbsa_code", "STRING", cbsa_code)]
+    )
+    return client.query(sql, job_config=job_config).to_dataframe()
+
+
 def load_pdl_people_matches(cbsa_code: str):
+    bq_df = load_pdl_people_matches_bq(cbsa_code)
+    if not bq_df.empty:
+        return bq_df, {"source": "bigquery"}
+
     inventory = load_local_validation_inventory("pdl_")
     if inventory.empty:
         return pd.DataFrame(), None
@@ -429,7 +468,7 @@ def render_review_panel():
 
         pdl_df, pdl_file = load_pdl_people_matches(selected_metro["CBSA Code"])
         st.subheader("PDL People Matches")
-        st.caption("Local validation results from saved PDL test files. This is not in BigQuery yet.")
+        st.caption("PDL people enrichment published from local runs into BigQuery. Local JSON fallback is still available for debugging.")
         if pdl_df.empty:
             st.info("No PDL people matches found yet for this metro.")
         else:
@@ -439,8 +478,14 @@ def render_review_panel():
             with pdl_col2:
                 st.metric("Matched Companies", pdl_df["company_name"].nunique())
             with pdl_col3:
-                st.metric("With LinkedIn URL", int(pdl_df["linkedin_url"].fillna("").ne("").sum()))
-            if pdl_file is not None:
+                st.metric("With LinkedIn URL", int(pdl_df["linkedin_url"].fillna("").ne("").sum()) if "linkedin_url" in pdl_df else 0)
+            if isinstance(pdl_file, dict) and pdl_file.get("source") == "bigquery":
+                if "uploaded_at_utc" in pdl_df and not pdl_df["uploaded_at_utc"].empty:
+                    latest_upload = pd.to_datetime(pdl_df["uploaded_at_utc"]).max()
+                    st.caption(f"Source: BigQuery | Latest upload: {latest_upload}")
+                else:
+                    st.caption("Source: BigQuery")
+            elif pdl_file is not None:
                 st.caption(
                     f"Source file: {pdl_file['name']} | Updated: {pdl_file['modified_at']} | Size: {pdl_file['size_kb']} KB"
                 )
@@ -512,6 +557,7 @@ def render_export_panel():
         selected_metro["CBSA Code"],
         selected_metro.get("State(s)", ""),
     )
+    pdl_df, pdl_source = load_pdl_people_matches(selected_metro["CBSA Code"])
 
     if master_df.empty:
         st.info("No BigQuery master-list rows found yet for this metro.")
@@ -546,6 +592,27 @@ def render_export_panel():
             file_name=linkedin_export_name,
             mime="text/csv",
             key=f"download_linkedin_{selected_metro['CBSA Code']}",
+        )
+
+    st.subheader("Export PDL People Matches")
+    if pdl_df.empty:
+        st.info("No PDL people matches found yet for this metro.")
+    else:
+        pdl_export_name = (
+            f"pdl_people_matches_"
+            f"{selected_metro['CBSA Code']}_"
+            f"{selected_metro['Metro Area Name'].lower().replace(',', '').replace(' ', '_')}.csv"
+        )
+        if isinstance(pdl_source, dict) and pdl_source.get("source") == "bigquery":
+            st.caption(f"Matched people ready: {len(pdl_df)} | Source: BigQuery")
+        else:
+            st.caption(f"Matched people ready: {len(pdl_df)} | Source: Local validation file")
+        st.download_button(
+            label=f"Download {pdl_export_name}",
+            data=dataframe_to_csv_bytes(pdl_df),
+            file_name=pdl_export_name,
+            mime="text/csv",
+            key=f"download_pdl_{selected_metro['CBSA Code']}",
         )
 
     inventory = load_local_output_inventory()
