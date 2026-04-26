@@ -1,0 +1,394 @@
+Rank,CBSA Code,Metro Area Name,State(s),Population (2025),Population (2024),Population (2020),5-Year Change,5-Year Growth %,Counties,CSA Code,CSA Title
+1,35620,"New York-Newark-Jersey City, NY-NJ","New Jersey, New York","20,112,448","20,080,087","19,999,993","112,455",0.6%,22,408,"New York-Newark, NY-NJ-CT-PA"
+2,31080,"Los Angeles-Long Beach-Anaheim, CA",California,"12,844,441","12,906,895","13,182,677","-338,236",-2.6%,2,348,"Los Angeles-Long Beach, CA"
+3,16980,"Chicago-Naperville-Elgin, IL-IN","Illinois, Indiana","9,434,123","9,411,198","9,435,971","-1,848",0.0%,13,176,"Chicago-Naperville, IL-IN-WI"
+4,19100,"Dallas-Fort Worth-Arlington, TX",Texas,"8,477,157","8,353,600","7,667,416","809,741",10.6%,11,206,"Dallas-Fort Worth, TX-OK"
+5,26420,"Houston-Pasadena-The Woodlands, TX",Texas,"7,904,627","7,777,907","7,169,284","735,343",10.3%,10,288,"Houston-Pasadena, TX"
+6,12060,"Atlanta-Sandy Springs-Roswell, GA",Georgia,"6,482,182","6,420,229","6,120,770","361,412",5.9%,29,122,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL"
+7,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV","District of Columbia, Maryland, Virginia, West Virginia","6,465,724","6,415,518","6,260,638","205,086",3.3%,23,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+8,33100,"Miami-Fort Lauderdale-West Palm Beach, FL",Florida,"6,391,072","6,399,981","6,133,159","257,913",4.2%,3,370,"Miami-Port St. Lucie-Fort Lauderdale, FL"
+9,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD","Delaware, Maryland, New Jersey, Pennsylvania","6,329,118","6,313,158","6,242,164","86,954",1.4%,11,428,"Philadelphia-Reading-Camden, PA-NJ-DE-MD"
+10,38060,"Phoenix-Mesa-Chandler, AZ",Arizona,"5,228,938","5,169,873","4,875,256","353,682",7.3%,2,429,"Phoenix-Mesa, AZ"
+11,14460,"Boston-Cambridge-Newton, MA-NH","Massachusetts, New Hampshire","5,034,221","5,022,230","4,921,409","112,812",2.3%,7,148,"Boston-Worcester-Providence, MA-RI-NH"
+12,40140,"Riverside-San Bernardino-Ontario, CA",California,"4,769,007","4,747,876","4,607,646","161,361",3.5%,2,348,"Los Angeles-Long Beach, CA"
+13,41860,"San Francisco-Oakland-Fremont, CA",California,"4,630,041","4,623,434","4,745,853","-115,812",-2.4%,5,488,"San Jose-San Francisco-Oakland, CA"
+14,19820,"Detroit-Warren-Dearborn, MI",Michigan,"4,390,913","4,377,045","4,385,353","5,560",0.1%,6,220,"Detroit-Warren-Ann Arbor, MI"
+15,42660,"Seattle-Tacoma-Bellevue, WA",Washington,"4,161,883","4,118,815","4,027,814","134,069",3.3%,3,500,"Seattle-Tacoma, WA"
+16,33460,"Minneapolis-St. Paul-Bloomington, MN-WI","Minnesota, Wisconsin","3,790,295","3,760,895","3,694,131","96,164",2.6%,15,378,"Minneapolis-St. Paul, MN-WI"
+17,45300,"Tampa-St. Petersburg-Clearwater, FL",Florida,"3,418,895","3,405,357","3,187,831","231,064",7.2%,4,,
+18,41740,"San Diego-Chula Vista-Carlsbad, CA",California,"3,282,248","3,287,542","3,301,110","-18,862",-0.6%,1,,
+19,19740,"Denver-Aurora-Centennial, CO",Colorado,"3,092,037","3,081,092","2,970,099","121,938",4.1%,10,216,"Denver-Aurora-Greeley, CO"
+20,36740,"Orlando-Kissimmee-Sanford, FL",Florida,"2,957,672","2,919,982","2,680,430","277,242",10.3%,4,422,"Orlando-Lakeland-Deltona, FL"
+21,16740,"Charlotte-Concord-Gastonia, NC-SC","North Carolina, South Carolina","2,938,830","2,884,708","2,668,342","270,488",10.1%,11,172,"Charlotte-Concord, NC-SC"
+22,12580,"Baltimore-Columbia-Towson, MD",Maryland,"2,857,781","2,853,522","2,847,138","10,643",0.4%,7,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+23,41180,"St. Louis, MO-IL","Illinois, Missouri","2,814,421","2,811,394","2,819,811","-5,390",-0.2%,15,476,"St. Louis-St. Charles-Farmington, MO-IL"
+24,41700,"San Antonio-New Braunfels, TX",Texas,"2,813,140","2,774,738","2,568,772","244,368",9.5%,8,484,"San Antonio-New Braunfels-Kerrville, TX"
+25,12420,"Austin-Round Rock-San Marcos, TX",Texas,"2,620,945","2,567,149","2,300,172","320,773",13.9%,5,,
+26,38900,"Portland-Vancouver-Hillsboro, OR-WA","Oregon, Washington","2,542,282","2,531,245","2,517,518","24,764",1.0%,7,440,"Portland-Vancouver-Salem, OR-WA"
+27,40900,"Sacramento-Roseville-Folsom, CA",California,"2,477,274","2,459,807","2,401,737","75,537",3.1%,4,472,"Sacramento-Roseville, CA"
+28,38300,"Pittsburgh, PA",Pennsylvania,"2,421,992","2,425,152","2,455,193","-33,201",-1.4%,8,430,"Pittsburgh-Weirton-Steubenville, PA-OH-WV"
+29,29820,"Las Vegas-Henderson-North Las Vegas, NV",Nevada,"2,407,226","2,385,746","2,275,833","131,393",5.8%,1,332,"Las Vegas-Henderson, NV"
+30,17140,"Cincinnati, OH-KY-IN","Indiana, Kentucky, Ohio","2,312,858","2,299,751","2,251,978","60,880",2.7%,15,178,"Cincinnati-Wilmington, OH-KY-IN"
+31,28140,"Kansas City, MO-KS","Kansas, Missouri","2,270,682","2,253,287","2,195,241","75,441",3.4%,14,312,"Kansas City-Overland Park-Kansas City, MO-KS"
+32,18140,"Columbus, OH",Ohio,"2,242,028","2,220,716","2,141,983","100,045",4.7%,10,198,"Columbus-Marion-Zanesville, OH"
+33,26900,"Indianapolis-Carmel-Greenwood, IN",Indiana,"2,205,695","2,183,424","2,092,783","112,912",5.4%,11,294,"Indianapolis-Carmel-Muncie, IN"
+34,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN",Tennessee,"2,197,416","2,162,758","2,021,837","175,579",8.7%,14,400,"Nashville-Davidson--Murfreesboro, TN"
+35,17410,"Cleveland, OH",Ohio,"2,165,775","2,163,236","2,184,166","-18,391",-0.8%,6,184,"Cleveland-Akron-Canton, OH"
+36,41940,"San Jose-Sunnyvale-Santa Clara, CA",California,"1,984,473","1,976,995","1,995,874","-11,401",-0.6%,2,488,"San Jose-San Francisco-Oakland, CA"
+37,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC","North Carolina, Virginia","1,797,213","1,793,439","1,781,673","15,540",0.9%,18,545,"Virginia Beach-Chesapeake, VA-NC"
+38,27260,"Jacksonville, FL",Florida,"1,785,500","1,759,347","1,613,022","172,478",10.7%,5,300,"Jacksonville-Kingsland-Palatka, FL-GA"
+39,39300,"Providence-Warwick, RI-MA","Massachusetts, Rhode Island","1,708,161","1,701,280","1,673,210","34,951",2.1%,6,148,"Boston-Worcester-Providence, MA-RI-NH"
+40,39580,"Raleigh-Cary, NC",North Carolina,"1,595,720","1,558,927","1,417,382","178,338",12.6%,3,450,"Raleigh-Durham-Cary, NC"
+41,33340,"Milwaukee-Waukesha, WI",Wisconsin,"1,575,010","1,572,498","1,574,549",461,0.0%,4,376,"Milwaukee-Racine-Waukesha, WI"
+42,36420,"Oklahoma City, OK",Oklahoma,"1,512,813","1,499,068","1,430,019","82,794",5.8%,7,416,"Oklahoma City-Shawnee, OK"
+43,31140,"Louisville/Jefferson County, KY-IN","Indiana, Kentucky","1,402,509","1,395,134","1,362,981","39,528",2.9%,12,350,"Louisville/Jefferson County--Elizabethtown, KY-IN"
+44,40060,"Richmond, VA",Virginia,"1,389,338","1,374,727","1,316,683","72,655",5.5%,17,,
+45,32820,"Memphis, TN-MS-AR","Arkansas, Mississippi, Tennessee","1,341,412","1,345,629","1,346,138","-4,726",-0.4%,9,368,"Memphis-Clarksdale-Forrest City, TN-MS-AR"
+46,41620,"Salt Lake City-Murray, UT",Utah,"1,308,377","1,302,282","1,260,358","48,019",3.8%,2,482,"Salt Lake City-Provo-Orem, UT-ID"
+47,23420,"Fresno, CA",California,"1,203,383","1,199,830","1,165,959","37,424",3.2%,2,260,"Fresno-Hanford-Corcoran, CA"
+48,13820,"Birmingham, AL",Alabama,"1,197,766","1,194,316","1,181,801","15,965",1.4%,7,142,"Birmingham-Cullman-Talladega, AL"
+49,24340,"Grand Rapids-Wyoming-Kentwood, MI",Michigan,"1,183,645","1,175,992","1,151,530","32,115",2.8%,5,266,"Grand Rapids-Wyoming, MI"
+50,25540,"Hartford-West Hartford-East Hartford, CT",Connecticut,"1,171,426","1,166,241","1,137,300","34,126",3.0%,2,405,"New Haven-Hartford-Waterbury, CT"
+51,15380,"Buffalo-Cheektowaga, NY",New York,"1,155,653","1,157,163","1,164,609","-8,956",-0.8%,2,160,"Buffalo-Cheektowaga-Olean, NY"
+52,46060,"Tucson, AZ",Arizona,"1,074,685","1,073,456","1,045,245","29,440",2.8%,1,536,"Tucson-Nogales, AZ"
+53,46140,"Tulsa, OK",Oklahoma,"1,069,273","1,061,080","1,017,349","51,924",5.1%,7,538,"Tulsa-Bartlesville-Muskogee, OK"
+54,40380,"Rochester, NY",New York,"1,056,149","1,055,265","1,063,676","-7,527",-0.7%,5,464,"Rochester-Batavia-Seneca Falls, NY"
+55,24860,"Greenville-Anderson-Greer, SC",South Carolina,"1,014,101","999,627","930,749","83,352",9.0%,4,273,"Greenville-Spartanburg-Anderson, SC"
+56,36540,"Omaha, NE-IA","Iowa, Nebraska","1,009,836","1,000,266","969,154","40,682",4.2%,8,420,"Omaha-Fremont, NE-IA"
+57,46520,"Urban Honolulu, HI",Hawaii,"988,703","990,142","1,012,334","-23,631",-2.3%,1,,
+58,14860,"Bridgeport-Stamford-Danbury, CT",Connecticut,"978,179","974,112","943,100","35,079",3.7%,2,408,"New York-Newark, NY-NJ-CT-PA"
+59,35380,"New Orleans-Metairie, LA",Louisiana,"970,849","973,384","1,005,404","-34,555",-3.4%,7,406,"New Orleans-Metairie-Slidell, LA-MS"
+60,28940,"Knoxville, TN",Tennessee,"968,137","959,488","906,075","62,062",6.8%,9,315,"Knoxville-Morristown-Sevierville, TN"
+61,35840,"North Port-Bradenton-Sarasota, FL",Florida,"948,158","934,945","837,884","110,274",13.2%,2,412,"North Port-Bradenton, FL"
+62,12540,"Bakersfield-Delano, CA",California,"927,068","924,648","905,960","21,108",2.3%,1,,
+63,10740,"Albuquerque, NM",New Mexico,"925,279","924,628","917,692","7,587",0.8%,4,105,"Albuquerque-Santa Fe-Los Alamos, NM"
+64,32580,"McAllen-Edinburg-Mission, TX",Texas,"921,549","913,612","872,753","48,796",5.6%,1,365,"McAllen-Edinburg, TX"
+65,10580,"Albany-Schenectady-Troy, NY",New York,"915,835","911,532","898,629","17,206",1.9%,5,104,"Albany-Schenectady, NY"
+66,16700,"Charleston-North Charleston, SC",South Carolina,"889,263","874,088","803,468","85,795",10.7%,3,,
+67,12940,"Baton Rouge, LA",Louisiana,"888,699","884,447","870,264","18,435",2.1%,10,132,"Baton Rouge-Hammond, LA"
+68,49340,"Worcester, MA",Massachusetts,"888,502","883,722","857,028","31,474",3.7%,1,148,"Boston-Worcester-Providence, MA-RI-NH"
+69,10900,"Allentown-Bethlehem-Easton, PA-NJ","New Jersey, Pennsylvania","887,615","884,157","861,454","26,161",3.0%,4,106,"Allentown-Bethlehem-East Stroudsburg, PA-NJ"
+70,21340,"El Paso, TX",Texas,"881,291","883,344","869,771","11,520",1.3%,2,238,"El Paso-Las Cruces, TX-NM"
+71,17900,"Columbia, SC",South Carolina,"879,918","871,029","830,251","49,667",6.0%,6,192,"Columbia-Sumter-Orangeburg, SC"
+72,15980,"Cape Coral-Fort Myers, FL",Florida,"875,607","861,667","765,575","110,032",14.4%,1,163,"Cape Coral-Fort Myers-Naples, FL"
+73,29460,"Lakeland-Winter Haven, FL",Florida,"874,790","851,434","730,148","144,642",19.8%,1,422,"Orlando-Lakeland-Deltona, FL"
+74,14260,"Boise City, ID",Idaho,"864,243","845,389","770,194","94,049",12.2%,5,147,"Boise City-Mountain Home-Ontario, ID-OR"
+75,37100,"Oxnard-Thousand Oaks-Ventura, CA",California,"830,851","833,431","843,793","-12,942",-1.5%,1,348,"Los Angeles-Long Beach, CA"
+76,19430,"Dayton-Kettering-Beavercreek, OH",Ohio,"826,554","820,950","814,230","12,324",1.5%,3,212,"Dayton-Springfield-Kettering, OH"
+77,44700,"Stockton-Lodi, CA",California,"823,815","817,149","780,618","43,197",5.5%,1,488,"San Jose-San Francisco-Oakland, CA"
+78,24660,"Greensboro-High Point, NC",North Carolina,"805,945","799,545","774,328","31,617",4.1%,3,268,"Greensboro--Winston-Salem--High Point, NC"
+79,17820,"Colorado Springs, CO",Colorado,"781,796","777,099","758,467","23,329",3.1%,2,,
+80,30780,"Little Rock-North Little Rock-Conway, AR",Arkansas,"777,607","772,588","748,989","28,618",3.8%,6,340,"Little Rock-North Little Rock, AR"
+81,39340,"Provo-Orem-Lehi, UT",Utah,"773,426","758,992","675,397","98,029",14.5%,2,482,"Salt Lake City-Provo-Orem, UT-ID"
+82,19780,"Des Moines-West Des Moines, IA",Iowa,"758,539","750,777","711,197","47,342",6.7%,6,218,"Des Moines-West Des Moines-Ames, IA"
+83,19660,"Deltona-Daytona Beach-Ormond Beach, FL",Florida,"746,933","737,391","671,822","75,111",11.2%,2,422,"Orlando-Lakeland-Deltona, FL"
+84,28880,"Kiryas Joel-Poughkeepsie-Newburgh, NY",New York,"718,377","714,344","697,282","21,095",3.0%,2,408,"New York-Newark, NY-NJ-CT-PA"
+85,49180,"Winston-Salem, NC",North Carolina,"712,206","705,337","676,371","35,835",5.3%,5,268,"Greensboro--Winston-Salem--High Point, NC"
+86,31540,"Madison, WI",Wisconsin,"709,685","705,542","681,904","27,781",4.1%,4,357,"Madison-Janesville-Beloit, WI"
+87,10420,"Akron, OH",Ohio,"701,780","700,152","701,686",94,0.0%,2,184,"Cleveland-Akron-Canton, OH"
+88,36260,"Ogden, UT",Utah,"672,784","667,789","639,140","33,644",5.3%,3,482,"Salt Lake City-Provo-Orem, UT-ID"
+89,37340,"Palm Bay-Melbourne-Titusville, FL",Florida,"663,982","656,254","608,765","55,217",9.1%,1,,
+90,48620,"Wichita, KS",Kansas,"663,809","659,504","648,556","15,253",2.4%,4,556,"Wichita-Arkansas City-Winfield, KS"
+91,45060,"Syracuse, NY",New York,"652,273","653,548","660,808","-8,535",-1.3%,3,532,"Syracuse-Auburn, NY"
+92,12260,"Augusta-Richmond County, GA-SC","Georgia, South Carolina","641,231","635,550","612,228","29,003",4.7%,7,,
+93,20500,"Durham-Chapel Hill, NC",North Carolina,"625,485","618,157","582,060","43,425",7.5%,4,450,"Raleigh-Durham-Cary, NC"
+94,22220,"Fayetteville-Springdale-Rogers, AR",Arkansas,"622,177","607,433","549,908","72,269",13.1%,3,,
+95,25420,"Harrisburg-Carlisle, PA",Pennsylvania,"617,427","614,139","592,775","24,652",4.2%,3,276,"Harrisburg-York-Lebanon, PA"
+96,27140,"Jackson, MS",Mississippi,"609,847","608,497","618,845","-8,998",-1.5%,8,298,"Jackson-Vicksburg-Brookhaven, MS"
+97,44060,"Spokane-Spokane Valley, WA",Washington,"608,012","604,663","587,729","20,283",3.5%,2,518,"Spokane-Spokane Valley-Coeur d'Alene, WA-ID"
+98,45780,"Toledo, OH",Ohio,"599,376","599,402","605,724","-6,348",-1.0%,3,,
+99,16860,"Chattanooga, TN-GA","Georgia, Tennessee","594,530","589,864","564,631","29,899",5.3%,6,174,"Chattanooga-Cleveland-Dalton, TN-GA-AL"
+100,35300,"New Haven, CT",Connecticut,"578,741","577,538","564,449","14,292",2.5%,1,405,"New Haven-Hartford-Waterbury, CT"
+101,39900,"Reno, NV",Nevada,"578,734","573,341","551,300","27,434",5.0%,3,456,"Reno-Carson City-Gardnerville Ranchos, NV-CA"
+102,38860,"Portland-South Portland, ME",Maine,"577,635","573,465","552,591","25,044",4.5%,3,438,"Portland-Lewiston-South Portland, ME"
+103,42540,"Scranton--Wilkes-Barre, PA",Pennsylvania,"574,418","573,173","566,757","7,661",1.4%,3,,
+104,38940,"Port St. Lucie, FL",Florida,"568,721","556,794","490,109","78,612",16.0%,2,370,"Miami-Port St. Lucie-Fort Lauderdale, FL"
+105,29540,"Lancaster, PA",Pennsylvania,"563,159","562,062","552,819","10,340",1.9%,1,,
+106,33700,"Modesto, CA",California,"557,719","557,372","553,702","4,017",0.7%,1,488,"San Jose-San Francisco-Oakland, CA"
+107,26620,"Huntsville, AL",Alabama,"556,444","542,122","494,708","61,736",12.5%,2,290,"Huntsville-Decatur-Albertville, AL-TN"
+108,37860,"Pensacola-Ferry Pass-Brent, FL",Florida,"544,949","539,843","511,571","33,378",6.5%,2,,
+109,30460,"Lexington-Fayette, KY",Kentucky,"535,174","530,816","517,431","17,743",3.4%,6,336,"Lexington-Fayette--Richmond--Frankfort, KY"
+110,28660,"Killeen-Temple, TX",Texas,"511,497","506,188","477,213","34,284",7.2%,3,,
+111,44180,"Springfield, MO",Missouri,"500,694","496,363","476,379","24,315",5.1%,5,,
+112,48900,"Wilmington, NC",North Carolina,"492,772","480,374","425,198","67,574",15.9%,3,,
+113,42220,"Santa Rosa-Petaluma, CA",California,"486,444","485,363","488,514","-2,070",-0.4%,1,,
+114,47300,"Visalia, CA",California,"485,146","483,851","473,915","11,231",2.4%,1,,
+115,29620,"Lansing-East Lansing, MI",Michigan,"479,722","476,759","473,347","6,375",1.3%,3,330,"Lansing-East Lansing-Owosso, MI"
+116,49620,"York-Hanover, PA",Pennsylvania,"473,197","469,986","456,725","16,472",3.6%,1,276,"Harrisburg-York-Lebanon, PA"
+117,23060,"Fort Wayne, IN",Indiana,"466,258","462,866","448,605","17,653",3.9%,3,258,"Fort Wayne-Huntington-Auburn, IN"
+118,44140,"Springfield, MA",Massachusetts,"464,338","463,418","463,651",687,0.1%,1,521,"Springfield-Amherst Town-Northampton, MA"
+119,47930,"Waterbury-Shelton, CT",Connecticut,"463,349","461,480","448,993","14,356",3.2%,1,405,"New Haven-Hartford-Waterbury, CT"
+120,46700,"Vallejo, CA",California,"455,376","455,076","452,895","2,481",0.5%,1,488,"San Jose-San Francisco-Oakland, CA"
+121,18580,"Corpus Christi, TX",Texas,"451,191","450,145","446,323","4,868",1.1%,3,204,"Corpus Christi-Kingsville-Alice, TX"
+122,41420,"Salem, OR",Oregon,"445,814","443,423","434,267","11,547",2.7%,2,440,"Portland-Vancouver-Salem, OR-WA"
+123,36100,"Ocala, FL",Florida,"442,660","427,995","377,432","65,228",17.3%,1,,
+124,42200,"Santa Maria-Santa Barbara, CA",California,"442,065","443,081","448,325","-6,260",-1.4%,1,,
+125,39740,"Reading, PA",Pennsylvania,"440,072","438,379","428,651","11,421",2.7%,1,428,"Philadelphia-Reading-Camden, PA-NJ-DE-MD"
+126,42340,"Savannah, GA",Georgia,"438,314","434,036","405,341","32,973",8.1%,3,496,"Savannah-Hinesville-Statesboro, GA"
+127,15180,"Brownsville-Harlingen, TX",Texas,"433,946","432,952","421,504","12,442",3.0%,1,154,"Brownsville-Harlingen-Raymondville, TX"
+128,41500,"Salinas, CA",California,"433,729","433,447","440,493","-6,764",-1.5%,1,,
+129,31700,"Manchester-Nashua, NH",New Hampshire,"433,415","430,442","422,902","10,513",2.5%,1,148,"Boston-Worcester-Providence, MA-RI-NH"
+130,25060,"Gulfport-Biloxi, MS",Mississippi,"431,329","427,464","416,648","14,681",3.5%,4,,
+131,34820,"Myrtle Beach-Conway-North Myrtle Beach, SC",South Carolina,"427,551","414,307","353,774","73,777",20.9%,1,396,"Myrtle Beach-Conway, SC"
+132,29180,"Lafayette, LA",Louisiana,"423,758","420,683","408,235","15,523",3.8%,4,318,"Lafayette-New Iberia-Opelousas, LA"
+133,49660,"Youngstown-Warren, OH",Ohio,"423,678","424,591","429,670","-5,992",-1.4%,2,566,"Youngstown-Warren-Salem, OH"
+134,11700,"Asheville, NC",North Carolina,"422,345","422,979","407,559","14,786",3.6%,3,120,"Asheville-Waynesville-Brevard, NC"
+135,34940,"Naples-Marco Island, FL",Florida,"417,131","416,722","377,327","39,804",10.5%,1,163,"Cape Coral-Fort Myers-Naples, FL"
+136,33660,"Mobile, AL",Alabama,"411,658","412,193","414,414","-2,756",-0.7%,1,380,"Mobile-Daphne-Fairhope, AL"
+137,43900,"Spartanburg, SC",South Carolina,"407,656","396,728","356,543","51,113",14.3%,2,273,"Greenville-Spartanburg-Anderson, SC"
+138,11260,"Anchorage, AK",Alaska,"405,821","404,623","398,391","7,430",1.9%,2,,
+139,22420,"Flint, MI",Michigan,"401,093","401,288","405,746","-4,653",-1.1%,1,220,"Detroit-Warren-Ann Arbor, MI"
+140,15940,"Canton-Massillon, OH",Ohio,"400,246","399,807","401,237",-991,-0.2%,2,184,"Cleveland-Akron-Canton, OH"
+141,13140,"Beaumont-Port Arthur, TX",Texas,"399,310","399,102","397,257","2,053",0.5%,3,,
+142,45940,"Trenton-Princeton, NJ",New Jersey,"399,289","397,329","386,434","12,855",3.3%,1,408,"New York-Newark, NY-NJ-CT-PA"
+143,45220,"Tallahassee, FL",Florida,"397,442","396,048","385,672","11,770",3.1%,4,533,"Tallahassee-Bainbridge, FL-GA"
+144,22180,"Fayetteville, NC",North Carolina,"395,412","392,907","389,230","6,182",1.6%,2,246,"Fayetteville-Lumberton-Pinehurst, NC"
+145,33860,"Montgomery, AL",Alabama,"388,747","387,933","385,406","3,341",0.9%,4,388,"Montgomery-Selma, AL"
+146,43340,"Shreveport-Bossier City, LA",Louisiana,"383,474","383,764","392,511","-9,037",-2.3%,3,508,"Shreveport-Bossier City-Minden, LA"
+147,21660,"Eugene-Springfield, OR",Oregon,"381,584","382,081","384,242","-2,658",-0.7%,1,,
+148,19340,"Davenport-Moline-Rock Island, IA-IL","Illinois, Iowa","380,452","379,916","383,767","-3,315",-0.9%,4,209,"Davenport-Moline, IA-IL"
+149,24540,"Greeley, CO",Colorado,"378,426","371,280","331,434","46,992",14.2%,1,216,"Denver-Aurora-Greeley, CO"
+150,22660,"Fort Collins-Loveland, CO",Colorado,"377,292","374,200","359,942","17,350",4.8%,1,,
+151,25860,"Hickory-Lenoir-Morganton, NC",North Carolina,"376,890","373,361","365,142","11,748",3.2%,4,172,"Charlotte-Concord, NC-SC"
+152,12100,"Atlantic City-Hammonton, NJ",New Jersey,"372,047","372,561","369,221","2,826",0.8%,2,428,"Philadelphia-Reading-Camden, PA-NJ-DE-MD"
+153,11460,"Ann Arbor, MI",Michigan,"370,214","368,956","371,814","-1,600",-0.4%,1,220,"Detroit-Warren-Ann Arbor, MI"
+154,31180,"Lubbock, TX",Texas,"368,431","364,664","352,143","16,288",4.6%,6,352,"Lubbock-Plainview, TX"
+155,26580,"Huntington-Ashland, WV-KY-OH","Kentucky, Ohio, West Virginia","365,965","367,055","375,713","-9,748",-2.6%,8,170,"Charleston-Huntington-Ashland, WV-OH-KY"
+156,37900,"Peoria, IL",Illinois,"363,505","363,561","368,305","-4,800",-1.3%,5,427,"Peoria-Canton, IL"
+157,23540,"Gainesville, FL",Florida,"359,036","357,221","340,722","18,314",5.4%,3,264,"Gainesville-Lake City, FL"
+158,30700,"Lincoln, NE",Nebraska,"352,081","349,231","340,802","11,279",3.3%,2,339,"Lincoln-Beatrice, NE"
+159,17300,"Clarksville, TN-KY","Kentucky, Tennessee","349,001","346,603","321,823","27,178",8.4%,4,,
+160,40420,"Rockford, IL",Illinois,"337,242","336,491","338,283","-1,041",-0.3%,2,466,"Rockford-Freeport-Rochelle, IL"
+161,24580,"Green Bay, WI",Wisconsin,"336,756","335,026","328,581","8,175",2.5%,3,267,"Green Bay-Shawano, WI"
+162,14500,"Boulder, CO",Colorado,"328,560","329,485","330,982","-2,422",-0.7%,1,216,"Denver-Aurora-Greeley, CO"
+163,17980,"Columbus, GA-AL","Alabama, Georgia","324,830","324,393","329,195","-4,365",-1.3%,7,194,"Columbus-Auburn-Opelika, GA-AL"
+164,43780,"South Bend-Mishawaka, IN-MI","Indiana, Michigan","324,538","324,469","324,239",299,0.1%,2,515,"South Bend-Elkhart-Mishawaka, IN-MI"
+165,28420,"Kennewick-Richland, WA",Washington,"324,334","320,317","304,545","19,789",6.5%,2,314,"Kennewick-Richland-Walla Walla, WA"
+166,40220,"Roanoke, VA",Virginia,"316,547","316,291","315,249","1,298",0.4%,6,,
+167,25180,"Hagerstown-Martinsburg, MD-WV","Maryland, West Virginia","315,280","310,936","294,478","20,802",7.1%,3,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+168,18880,"Crestview-Fort Walton Beach-Destin, FL",Florida,"315,098","310,201","287,981","27,117",9.4%,2,,
+169,28700,"Kingsport-Bristol, TN-VA","Tennessee, Virginia","314,834","314,087","307,779","7,055",2.3%,5,304,"Johnson City-Kingsport-Bristol, TN-VA"
+170,43620,"Sioux Falls, SD-MN","Minnesota, South Dakota","314,638","309,220","287,378","27,260",9.5%,5,,
+171,47380,"Waco, TX",Texas,"308,807","307,067","296,386","12,421",4.2%,3,,
+172,36500,"Olympia-Lacey-Tumwater, WA",Washington,"304,261","302,132","296,013","8,248",2.8%,1,500,"Seattle-Tacoma, WA"
+173,30980,"Longview, TX",Texas,"297,315","296,451","286,412","10,903",3.8%,4,,
+174,32900,"Merced, CA",California,"297,260","296,807","282,895","14,365",5.1%,1,488,"San Jose-San Francisco-Oakland, CA"
+175,17780,"College Station-Bryan, TX",Texas,"287,476","286,095","268,973","18,503",6.9%,3,,
+176,46540,"Utica-Rome, NY",New York,"285,611","286,660","291,308","-5,697",-2.0%,2,,
+177,35980,"Norwich-New London-Willimantic, CT",Connecticut,"284,015","283,171","278,383","5,632",2.0%,1,405,"New Haven-Hartford-Waterbury, CT"
+178,14740,"Bremerton-Silverdale-Port Orchard, WA",Washington,"283,374","280,728","275,811","7,563",2.7%,1,500,"Seattle-Tacoma, WA"
+179,42020,"San Luis Obispo-Paso Robles, CA",California,"282,367","282,153","282,257",110,0.0%,1,,
+180,46220,"Tuscaloosa, AL",Alabama,"281,850","281,631","274,029","7,821",2.9%,4,,
+181,29700,"Laredo, TX",Texas,"281,224","280,570","267,336","13,888",5.2%,1,,
+182,20260,"Duluth, MN-WI","Minnesota, Wisconsin","281,219","281,273","280,608",611,0.2%,3,228,"Duluth-Grand Rapids, MN-WI"
+183,16300,"Cedar Rapids, IA",Iowa,"279,285","277,405","276,615","2,670",1.0%,3,168,"Cedar Rapids-Iowa City, IA"
+184,43640,"Slidell-Mandeville-Covington, LA",Louisiana,"279,108","277,665","264,989","14,119",5.3%,1,406,"New Orleans-Metairie-Slidell, LA-MS"
+185,11100,"Amarillo, TX",Texas,"276,235","274,270","269,020","7,215",2.7%,5,108,"Amarillo-Borger, TX"
+186,21780,"Evansville, IN",Indiana,"273,786","272,519","269,534","4,252",1.6%,3,241,"Evansville-Henderson, IN-KY"
+187,22020,"Fargo, ND-MN","Minnesota, North Dakota","269,528","266,610","250,255","19,273",7.7%,2,244,"Fargo-Wahpeton, ND-MN"
+188,31340,"Lynchburg, VA",Virginia,"269,169","267,002","261,650","7,519",2.9%,5,,
+189,19300,"Daphne-Fairhope-Foley, AL",Alabama,"267,761","261,652","233,252","34,509",14.8%,1,380,"Mobile-Daphne-Fairhope, AL"
+190,13460,"Bend, OR",Oregon,"266,376","264,207","248,976","17,400",7.0%,3,,
+191,21500,"Erie, PA",Pennsylvania,"265,832","266,435","270,724","-4,892",-1.8%,1,240,"Erie-Meadville, PA"
+192,28020,"Kalamazoo-Portage, MI",Michigan,"263,795","263,122","261,780","2,015",0.8%,1,310,"Kalamazoo-Battle Creek-Portage, MI"
+193,49420,"Yakima, WA",Washington,"259,185","258,971","256,716","2,469",1.0%,1,,
+194,42100,"Santa Cruz-Watsonville, CA",California,"258,852","261,417","271,758","-12,906",-4.7%,1,488,"San Jose-San Francisco-Oakland, CA"
+195,39150,"Prescott Valley-Prescott, AZ",Arizona,"252,552","251,196","237,223","15,329",6.5%,1,,
+196,46340,"Tyler, TX",Texas,"252,549","249,529","234,205","18,344",7.8%,1,540,"Tyler-Jacksonville, TX"
+197,11540,"Appleton, WI",Wisconsin,"249,876","248,549","243,434","6,442",2.6%,2,118,"Appleton-Oshkosh-Neenah, WI"
+198,29340,"Lake Charles, LA",Louisiana,"244,655","243,327","254,332","-9,677",-3.8%,3,324,"Lake Charles-DeRidder, LA"
+199,13780,"Binghamton, NY",New York,"243,189","243,438","246,497","-3,308",-1.3%,2,,
+200,25940,"Hilton Head Island-Bluffton-Port Royal, SC",South Carolina,"242,966","239,344","216,972","25,994",12.0%,2,,
+201,16580,"Champaign-Urbana, IL",Illinois,"239,979","239,146","236,429","3,550",1.5%,3,169,"Champaign-Urbana-Danville, IL"
+202,31420,"Macon-Bibb County, GA",Georgia,"238,553","237,876","233,589","4,964",2.1%,5,356,"Macon-Bibb County--Warner Robins, GA"
+203,13380,"Bellingham, WA",Washington,"236,392","234,601","227,452","8,940",3.9%,1,,
+204,22900,"Fort Smith, AR-OK","Arkansas, Oklahoma","234,140","232,976","227,210","6,930",3.1%,3,,
+205,12700,"Barnstable Town, MA",Massachusetts,"233,539","233,951","228,055","5,484",2.4%,1,148,"Boston-Worcester-Providence, MA-RI-NH"
+206,45820,"Topeka, KS",Kansas,"233,052","232,778","232,908",144,0.1%,5,,
+207,40340,"Rochester, MN",Minnesota,"231,184","230,100","226,579","4,605",2.0%,4,462,"Rochester-Austin-Winona, MN"
+208,37460,"Panama City-Panama City Beach, FL",Florida,"231,174","226,600","199,875","31,299",15.7%,2,,
+209,29740,"Las Cruces, NM",New Mexico,"229,091","228,104","220,059","9,032",4.1%,1,238,"El Paso-Las Cruces, TX-NM"
+210,16820,"Charlottesville, VA",Virginia,"228,597","227,229","221,638","6,959",3.1%,5,,
+211,29200,"Lafayette-West Lafayette, IN",Indiana,"228,468","227,968","223,855","4,613",2.1%,4,320,"Lafayette-West Lafayette-Frankfort, IN"
+212,29420,"Lake Havasu City-Kingman, AZ",Arizona,"228,102","226,262","214,167","13,935",6.5%,1,,
+213,15540,"Burlington-South Burlington, VT",Vermont,"227,803","228,314","225,730","2,073",0.9%,3,162,"Burlington-South Burlington-Barre, VT"
+214,23580,"Gainesville, GA",Georgia,"226,568","223,545","203,382","23,186",11.4%,1,122,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL"
+215,49740,"Yuma, AZ",Arizona,"224,449","221,388","205,618","18,831",9.2%,1,,
+216,12020,"Athens-Clarke County, GA",Georgia,"224,148","224,159","215,734","8,414",3.9%,4,122,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL"
+217,33740,"Monroe, LA",Louisiana,"222,390","223,095","226,691","-4,301",-1.9%,4,384,"Monroe-Ruston, LA"
+218,32780,"Medford, OR",Oregon,"221,795","221,347","223,753","-1,958",-0.9%,1,366,"Medford-Grants Pass, OR"
+219,17860,"Columbia, MO",Missouri,"219,062","218,164","210,857","8,205",3.9%,3,190,"Columbia-Jefferson City-Moberly, MO"
+220,39460,"Punta Gorda, FL",Florida,"217,212","211,456","188,023","29,189",15.5%,1,412,"North Port-Bradenton, FL"
+221,27340,"Jacksonville, NC",North Carolina,"217,175","214,672","204,984","12,191",5.9%,1,,
+222,27740,"Johnson City, TN",Tennessee,"216,416","214,867","207,475","8,941",4.3%,3,304,"Johnson City-Kingsport-Bristol, TN-VA"
+223,41100,"St. George, UT",Utah,"213,670","208,431","182,002","31,668",17.4%,1,,
+224,30500,"Lexington Park, MD",Maryland,"211,176","210,837","206,914","4,262",2.1%,2,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+225,17020,"Chico, CA",California,"209,211","208,586","210,204",-993,-0.5%,1,,
+226,27900,"Joplin, MO-KS","Kansas, Missouri","208,796","207,244","200,890","7,906",3.9%,3,309,"Joplin-Miami, MO-OK-KS"
+227,21140,"Elkhart-Goshen, IN",Indiana,"208,774","208,196","206,985","1,789",0.9%,1,515,"South Bend-Elkhart-Mishawaka, IN-MI"
+228,47580,"Warner Robins, GA",Georgia,"208,091","204,415","192,384","15,707",8.2%,2,356,"Macon-Bibb County--Warner Robins, GA"
+229,12220,"Auburn-Opelika, AL",Alabama,"208,013","206,057","194,302","13,711",7.1%,2,194,"Columbus-Auburn-Opelika, GA-AL"
+230,44100,"Springfield, IL",Illinois,"206,033","205,960","208,475","-2,442",-1.2%,2,522,"Springfield-Jacksonville-Lincoln, IL"
+231,41060,"St. Cloud, MN",Minnesota,"205,854","204,882","199,811","6,043",3.0%,2,378,"Minneapolis-St. Paul, MN-WI"
+232,22500,"Florence, SC",South Carolina,"201,392","201,000","199,679","1,713",0.9%,2,,
+233,16620,"Charleston, WV",West Virginia,"200,170","201,564","209,970","-9,800",-4.7%,3,170,"Charleston-Huntington-Ashland, WV-OH-KY"
+234,26380,"Houma-Bayou Cane-Thibodaux, LA",Louisiana,"199,668","199,607","206,836","-7,168",-3.5%,2,,
+235,39540,"Racine-Mount Pleasant, WI",Wisconsin,"198,919","198,441","198,061",858,0.4%,1,376,"Milwaukee-Racine-Waukesha, WI"
+236,14540,"Bowling Green, KY",Kentucky,"197,180","193,803","180,073","17,107",9.5%,4,150,"Bowling Green-Glasgow-Franklin, KY"
+237,20100,"Dover, DE",Delaware,"194,786","192,876","182,322","12,464",6.8%,1,428,"Philadelphia-Reading-Camden, PA-NJ-DE-MD"
+238,13740,"Billings, MT",Montana,"193,603","192,481","184,717","8,886",4.8%,3,,
+239,33260,"Midland, TX",Texas,"193,139","189,362","175,981","17,158",9.7%,2,372,"Midland-Odessa-Andrews, TX"
+240,17660,"Coeur d'Alene, ID",Idaho,"191,864","188,398","172,797","19,067",11.0%,1,518,"Spokane-Spokane Valley-Coeur d'Alene, WA-ID"
+241,40980,"Saginaw, MI",Michigan,"187,688","187,762","189,853","-2,165",-1.1%,1,474,"Saginaw-Midland-Bay City, MI"
+242,49700,"Yuba City, CA",California,"187,478","186,374","181,459","6,019",3.3%,2,472,"Sacramento-Roseville, CA"
+243,15500,"Burlington, NC",North Carolina,"186,177","183,361","171,624","14,553",8.5%,1,268,"Greensboro--Winston-Salem--High Point, NC"
+244,10180,"Abilene, TX",Texas,"185,429","183,719","176,899","8,530",4.8%,3,101,"Abilene-Sweetwater, TX"
+245,27180,"Jackson, TN",Tennessee,"184,569","183,716","180,561","4,008",2.2%,4,,
+246,28740,"Kingston, NY",New York,"183,330","183,095","181,304","2,026",1.1%,1,408,"New York-Newark, NY-NJ-CT-PA"
+247,24780,"Greenville, NC",North Carolina,"182,936","180,882","173,642","9,294",5.4%,1,274,"Greenville-Washington, NC"
+248,26980,"Iowa City, IA",Iowa,"182,711","181,465","175,607","7,104",4.0%,2,168,"Cedar Rapids-Iowa City, IA"
+249,39820,"Redding, CA",California,"181,648","181,392","182,191",-543,-0.3%,1,454,"Redding-Red Bluff, CA"
+250,13980,"Blacksburg-Christiansburg-Radford, VA",Virginia,"181,616","181,497","181,771",-155,-0.1%,5,,
+251,20940,"El Centro, CA",California,"181,411","182,771","179,532","1,879",1.0%,1,,
+252,34740,"Muskegon-Norton Shores, MI",Michigan,"177,901","177,225","174,783","3,118",1.8%,1,266,"Grand Rapids-Wyoming, MI"
+253,20740,"Eau Claire, WI",Wisconsin,"176,647","175,905","172,232","4,415",2.6%,2,232,"Eau Claire-Menomonie, WI"
+254,36780,"Oshkosh-Neenah, WI",Wisconsin,"174,218","173,294","171,833","2,385",1.4%,1,118,"Appleton-Oshkosh-Neenah, WI"
+255,26820,"Idaho Falls, ID",Idaho,"173,851","171,375","158,391","15,460",9.8%,3,292,"Idaho Falls-Rexburg-Blackfoot, ID"
+256,36220,"Odessa, TX",Texas,"173,801","170,654","165,491","8,310",5.0%,1,372,"Midland-Odessa-Andrews, TX"
+257,42680,"Sebastian-Vero Beach-West Vero Corridor, FL",Florida,"172,799","171,560","160,454","12,345",7.7%,1,370,"Miami-Port St. Lucie-Fort Lauderdale, FL"
+258,26140,"Homosassa Springs, FL",Florida,"171,666","169,821","154,563","17,103",11.1%,1,,
+259,14010,"Bloomington, IL",Illinois,"171,419","171,512","171,210",209,0.1%,1,145,"Bloomington-Pontiac, IL"
+260,29100,"La Crosse-Onalaska, WI-MN","Minnesota, Wisconsin","171,182","170,863","170,493",689,0.4%,3,317,"La Crosse-Onalaska-Sparta, WI-MN"
+261,39380,"Pueblo, CO",Colorado,"169,277","170,162","168,334",943,0.6%,1,444,"Pueblo-Cañon City, CO"
+262,45460,"Terre Haute, IN",Indiana,"169,241","168,774","168,791",450,0.3%,4,,
+263,47940,"Waterloo-Cedar Falls, IA",Iowa,"169,189","169,208","168,388",801,0.5%,3,,
+264,28450,"Kenosha, WI",Wisconsin,"168,448","168,448","169,186",-738,-0.4%,1,176,"Chicago-Naperville, IL-IN-WI"
+265,27500,"Janesville-Beloit, WI",Wisconsin,"166,472","165,665","163,763","2,709",1.7%,1,357,"Madison-Janesville-Beloit, WI"
+266,14020,"Bloomington, IN",Indiana,"165,231","164,490","161,954","3,277",2.0%,2,144,"Bloomington-Bedford, IN"
+267,11200,"Amherst Town-Northampton, MA",Massachusetts,"164,065","164,679","148,597","15,468",10.4%,1,521,"Springfield-Amherst Town-Northampton, MA"
+268,24300,"Grand Junction, CO",Colorado,"162,845","161,400","156,007","6,838",4.4%,1,,
+269,30860,"Logan, UT-ID","Idaho, Utah","160,889","160,329","147,920","12,969",8.8%,2,,
+270,27980,"Kahului-Wailuku, HI",Hawaii,"160,674","162,320","164,842","-4,168",-2.5%,2,,
+271,16540,"Chambersburg, PA",Pennsylvania,"160,652","159,476","155,938","4,714",3.0%,1,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+272,19460,"Decatur, AL",Alabama,"160,326","159,899","156,406","3,920",2.5%,2,290,"Huntsville-Decatur-Albertville, AL-TN"
+273,27100,"Jackson, MI",Michigan,"159,552","159,588","160,215",-663,-0.4%,1,,
+274,25620,"Hattiesburg, MS",Mississippi,"158,014","157,175","154,045","3,969",2.6%,3,279,"Hattiesburg-Laurel, MS"
+275,12620,"Bangor, ME",Maine,"157,967","157,283","152,174","5,793",3.8%,1,,
+276,48680,"Wildwood-The Villages, FL",Florida,"157,772","154,261","130,293","27,479",21.1%,1,422,"Orlando-Lakeland-Deltona, FL"
+277,44300,"State College, PA",Pennsylvania,"157,393","158,505","158,035",-642,-0.4%,1,524,"State College-DuBois, PA"
+278,47220,"Vineland, NJ",New Jersey,"157,148","156,407","153,733","3,415",2.2%,1,428,"Philadelphia-Reading-Camden, PA-NJ-DE-MD"
+279,45900,"Traverse City, MI",Michigan,"156,972","156,445","153,666","3,306",2.2%,4,,
+280,39660,"Rapid City, SD",South Dakota,"156,934","156,511","147,800","9,134",6.2%,3,452,"Rapid City-Spearfish, SD"
+281,42140,"Santa Fe, NM",New Mexico,"156,907","157,320","155,068","1,839",1.2%,1,105,"Albuquerque-Santa Fe-Los Alamos, NM"
+282,22520,"Florence-Muscle Shoals, AL",Alabama,"156,609","156,371","151,338","5,271",3.5%,2,250,"Florence-Muscle Shoals-Russellville, AL"
+283,20020,"Dothan, AL",Alabama,"156,266","155,272","151,176","5,090",3.4%,3,222,"Dothan-Enterprise-Ozark, AL"
+284,33780,"Monroe, MI",Michigan,"156,004","155,870","154,912","1,092",0.7%,1,220,"Detroit-Warren-Ann Arbor, MI"
+285,25260,"Hanford-Corcoran, CA",California,"154,327","154,119","152,813","1,514",1.0%,1,260,"Fresno-Hanford-Corcoran, CA"
+286,43300,"Sherman-Denison, TX",Texas,"153,613","150,865","136,157","17,456",12.8%,1,206,"Dallas-Fort Worth, TX-OK"
+287,46660,"Valdosta, GA",Georgia,"153,276","152,750","148,340","4,936",3.3%,4,,
+288,27620,"Jefferson City, MO",Missouri,"152,712","151,898","149,420","3,292",2.2%,4,190,"Columbia-Jefferson City-Moberly, MO"
+289,35660,"Niles, MI",Michigan,"152,444","152,394","154,395","-1,951",-1.3%,1,515,"South Bend-Elkhart-Mishawaka, IN-MI"
+290,49020,"Winchester, VA-WV","Virginia, West Virginia","152,332","150,030","142,980","9,352",6.5%,3,548,"Washington-Baltimore-Arlington, DC-MD-VA-WV-PA"
+291,48660,"Wichita Falls, TX",Texas,"149,448","149,400","148,419","1,029",0.7%,3,,
+292,40580,"Rocky Mount, NC",North Carolina,"148,486","147,856","144,414","4,072",2.8%,2,468,"Rocky Mount-Wilson-Roanoke Rapids, NC"
+293,10780,"Alexandria, LA",Louisiana,"147,952","148,043","151,805","-3,853",-2.5%,2,,
+294,19140,"Dalton, GA",Georgia,"147,819","146,957","142,786","5,033",3.5%,2,174,"Chattanooga-Cleveland-Dalton, TN-GA-AL"
+295,45500,"Texarkana, TX-AR","Arkansas, Texas","146,816","146,735","147,471",-655,-0.4%,3,,
+296,30140,"Lebanon, PA",Pennsylvania,"146,380","145,392","143,272","3,108",2.2%,1,276,"Harrisburg-York-Lebanon, PA"
+297,43580,"Sioux City, IA-NE-SD","Iowa, Nebraska, South Dakota","145,738","145,609","144,348","1,390",1.0%,3,512,"Sioux City-Le Mars, IA-NE-SD"
+298,10500,"Albany, GA",Georgia,"145,510","145,707","148,242","-2,732",-1.8%,4,,
+299,22380,"Flagstaff, AZ",Arizona,"144,368","144,658","145,182",-814,-0.6%,1,,
+300,34060,"Morgantown, WV",West Virginia,"141,995","141,918","140,118","1,877",1.3%,2,,
+301,25220,"Hammond, LA",Louisiana,"141,346","139,983","133,651","7,695",5.8%,1,132,"Baton Rouge-Hammond, LA"
+302,25500,"Harrisonburg, VA",Virginia,"140,155","139,111","135,478","4,677",3.5%,2,277,"Harrisonburg-Staunton-Stuarts Draft, VA"
+303,13900,"Bismarck, ND",North Dakota,"139,750","138,592","133,783","5,967",4.5%,3,,
+304,27860,"Jonesboro, AR",Arkansas,"139,440","138,696","134,577","4,863",3.6%,2,308,"Jonesboro-Paragould, AR"
+305,48140,"Wausau, WI",Wisconsin,"139,432","139,094","138,119","1,313",1.0%,1,554,"Wausau-Stevens Point-Wisconsin Rapids, WI"
+306,31740,"Manhattan, KS",Kansas,"136,122","134,395","134,201","1,921",1.4%,3,,
+307,44220,"Springfield, OH",Ohio,"135,340","136,170","135,888",-548,-0.4%,1,212,"Dayton-Springfield-Kettering, OH"
+308,48540,"Wheeling, WV-OH","Ohio, West Virginia","134,089","135,017","139,130","-5,041",-3.6%,3,,
+309,17420,"Cleveland, TN",Tennessee,"134,057","132,522","126,390","7,667",6.1%,2,174,"Chattanooga-Cleveland-Dalton, TN-GA-AL"
+310,12980,"Battle Creek, MI",Michigan,"133,408","133,611","134,198",-790,-0.6%,1,310,"Kalamazoo-Battle Creek-Portage, MI"
+311,34580,"Mount Vernon-Anacortes, WA",Washington,"132,975","132,250","129,885","3,090",2.4%,1,500,"Seattle-Tacoma, WA"
+312,34900,"Napa, CA",California,"132,949","133,115","137,481","-4,532",-3.3%,1,488,"San Jose-San Francisco-Oakland, CA"
+313,10540,"Albany, OR",Oregon,"132,843","132,584","128,950","3,893",3.0%,1,440,"Portland-Vancouver-Salem, OR-WA"
+314,41540,"Salisbury, MD",Maryland,"131,872","131,392","128,134","3,738",2.9%,2,480,"Salisbury-Ocean Pines, MD"
+315,44420,"Staunton-Stuarts Draft, VA",Virginia,"129,692","128,599","125,676","4,016",3.2%,3,277,"Harrisonburg-Staunton-Stuarts Draft, VA"
+316,27780,"Johnstown, PA",Pennsylvania,"128,968","129,905","133,200","-4,232",-3.2%,1,306,"Johnstown-Somerset, PA"
+317,34100,"Morristown, TN",Tennessee,"128,867","127,394","119,450","9,417",7.9%,2,315,"Knoxville-Morristown-Sevierville, TN"
+318,14580,"Bozeman, MT",Montana,"128,740","127,498","119,593","9,147",7.6%,1,,
+319,33540,"Missoula, MT",Montana,"128,698","127,658","122,904","5,794",4.7%,2,,
+320,21060,"Elizabethtown, KY",Kentucky,"128,666","127,800","125,713","2,953",2.3%,2,350,"Louisville/Jefferson County--Elizabethtown, KY-IN"
+321,48300,"Wenatchee-East Wenatchee, WA",Washington,"128,414","126,899","122,335","6,079",5.0%,2,,
+322,38340,"Pittsfield, MA",Massachusetts,"128,224","129,049","129,816","-1,592",-1.2%,1,,
+323,11180,"Ames, IA",Iowa,"128,090","128,145","125,363","2,727",2.2%,2,218,"Des Moines-West Des Moines-Ames, IA"
+324,30020,"Lawton, OK",Oklahoma,"127,590","127,140","126,690",900,0.7%,2,334,"Lawton-Duncan, OK"
+325,43420,"Sierra Vista-Douglas, AZ",Arizona,"126,332","125,199","125,527",805,0.6%,1,,
+326,31900,"Mansfield, OH",Ohio,"124,893","124,957","124,969",-76,-0.1%,1,360,"Mansfield-Ashland-Bucyrus, OH"
+327,24020,"Glens Falls, NY",New York,"124,373","125,083","126,724","-2,351",-1.9%,2,104,"Albany-Schenectady, NY"
+328,46300,"Twin Falls, ID",Idaho,"123,901","122,755","114,634","9,267",8.1%,2,,
+329,24140,"Goldsboro, NC",North Carolina,"122,278","121,168","117,758","4,520",3.8%,1,,
+330,41660,"San Angelo, TX",Texas,"122,065","121,716","121,691",374,0.3%,2,,
+331,29940,"Lawrence, KS",Kansas,"120,920","120,939","118,781","2,139",1.8%,1,312,"Kansas City-Overland Park-Kansas City, MO-KS"
+332,22140,"Farmington, NM",New Mexico,"120,340","120,525","121,384","-1,044",-0.9%,1,,
+333,11020,"Altoona, PA",Pennsylvania,"119,541","120,051","122,667","-3,126",-2.5%,1,107,"Altoona-Huntingdon, PA"
+334,41140,"St. Joseph, MO-KS","Kansas, Missouri","119,170","119,189","121,656","-2,486",-2.0%,4,312,"Kansas City-Overland Park-Kansas City, MO-KS"
+335,15260,"Brunswick-St. Simons, GA",Georgia,"118,524","117,563","113,506","5,018",4.4%,3,,
+336,43100,"Sheboygan, WI",Wisconsin,"118,047","118,091","118,040",7,0.0%,1,,
+337,30340,"Lewiston-Auburn, ME",Maine,"116,487","115,600","111,181","5,306",4.8%,1,438,"Portland-Lewiston-South Portland, ME"
+338,11500,"Anniston-Oxford, AL",Alabama,"115,834","116,303","116,238",-404,-0.3%,1,,
+339,31020,"Longview-Kelso, WA",Washington,"114,885","113,764","111,014","3,871",3.5%,1,440,"Portland-Vancouver-Salem, OR-WA"
+340,36980,"Owensboro, KY",Kentucky,"113,962","113,356","112,532","1,430",1.3%,2,,
+341,34620,"Muncie, IN",Indiana,"113,106","112,752","111,764","1,342",1.2%,1,294,"Indianapolis-Carmel-Muncie, IN"
+342,41780,"Sandusky, OH",Ohio,"112,777","113,374","115,774","-2,997",-2.6%,2,184,"Cleveland-Akron-Canton, OH"
+343,48700,"Williamsport, PA",Pennsylvania,"112,587","112,918","114,120","-1,533",-1.3%,1,558,"Williamsport-Lock Haven, PA"
+344,48260,"Weirton-Steubenville, WV-OH","Ohio, West Virginia","112,468","113,139","116,680","-4,212",-3.6%,3,430,"Pittsburgh-Weirton-Steubenville, PA-OH-WV"
+345,48060,"Watertown-Fort Drum, NY",New York,"111,540","112,795","116,075","-4,535",-3.9%,1,,
+346,33140,"Michigan City-La Porte, IN",Indiana,"111,294","111,349","112,279",-985,-0.9%,1,176,"Chicago-Naperville, IL-IN-WI"
+347,42700,"Sebring, FL",Florida,"111,122","109,892","101,341","9,781",9.7%,1,,
+348,38240,"Pinehurst-Southern Pines, NC",North Carolina,"110,619","108,383","100,295","10,324",10.3%,1,246,"Fayetteville-Lumberton-Pinehurst, NC"
+349,13220,"Beckley, WV",West Virginia,"109,940","110,739","114,846","-4,906",-4.3%,2,,
+350,23900,"Gettysburg, PA",Pennsylvania,"107,594","107,155","103,814","3,780",3.6%,1,276,"Harrisburg-York-Lebanon, PA"
+351,28100,"Kankakee, IL",Illinois,"105,525","105,814","107,402","-1,877",-1.7%,1,176,"Chicago-Naperville, IL-IN-WI"
+352,44940,"Sumter, SC",South Carolina,"105,067","104,788","105,409",-342,-0.3%,1,192,"Columbia-Sumter-Orangeburg, SC"
+353,24220,"Grand Forks, ND-MN","Minnesota, North Dakota","105,046","104,316","104,241",805,0.8%,2,,
+354,31860,"Mankato, MN",Minnesota,"104,907","104,439","103,706","1,201",1.2%,2,359,"Mankato-New Ulm, MN"
+355,22540,"Fond du Lac, WI",Wisconsin,"104,669","104,721","104,159",510,0.5%,1,,
+356,27060,"Ithaca, NY",New York,"104,047","104,394","105,508","-1,461",-1.4%,1,296,"Ithaca-Cortland, NY"
+357,23460,"Gadsden, AL",Alabama,"103,886","103,475","103,441",445,0.4%,1,,
+358,16940,"Cheyenne, WY",Wyoming,"102,938","101,687","100,727","2,211",2.2%,1,,
+359,37140,"Paducah, KY-IL","Illinois, Kentucky","102,259","102,567","103,454","-1,195",-1.2%,5,424,"Paducah-Mayfield, KY-IL"
+360,13020,"Bay City, MI",Michigan,"102,123","102,432","103,739","-1,616",-1.6%,1,474,"Saginaw-Midland-Bay City, MI"
+361,40660,"Rome, GA",Georgia,"101,378","101,198","98,597","2,781",2.8%,1,122,"Atlanta--Athens-Clarke County--Sandy Springs, GA-AL"
+362,30620,"Lima, OH",Ohio,"100,881","100,952","102,116","-1,235",-1.2%,1,338,"Lima-Van Wert-Celina, OH"
+363,47020,"Victoria, TX",Texas,"99,864","99,391","98,320","1,544",1.6%,2,544,"Victoria-Port Lavaca, TX"
+364,26300,"Hot Springs, AR",Arkansas,"99,695","99,910","100,259",-564,-0.6%,1,284,"Hot Springs-Malvern, AR"
+365,20220,"Dubuque, IA",Iowa,"99,381","99,033","99,311",70,0.1%,1,,
+366,19500,"Decatur, IL",Illinois,"99,300","99,949","103,761","-4,461",-4.3%,1,,
+367,16020,"Cape Girardeau, MO-IL","Illinois, Missouri","99,215","98,638","97,539","1,676",1.7%,3,164,"Cape Girardeau-Sikeston, MO-IL"
+368,18700,"Corvallis, OR",Oregon,"97,728","97,590","93,602","4,126",4.4%,1,440,"Portland-Vancouver-Salem, OR-WA"
+369,25740,"Helena, MT",Montana,"97,153","96,612","90,182","6,971",7.7%,3,,
+370,21820,"Fairbanks-College, AK",Alaska,"93,972","94,624","95,333","-1,361",-1.4%,1,,
+371,25980,"Hinesville, GA",Georgia,"91,870","90,030","81,586","10,284",12.6%,2,496,"Savannah-Hinesville-Statesboro, GA"
+372,38540,"Pocatello, ID",Idaho,"91,591","90,969","87,294","4,297",4.9%,1,,
+373,24420,"Grants Pass, OR",Oregon,"87,867","88,143","88,214",-347,-0.4%,1,366,"Medford-Grants Pass, OR"
+374,37620,"Parkersburg-Vienna, WV",West Virginia,"87,264","87,558","89,340","-2,076",-2.3%,2,425,"Parkersburg-Marietta-Vienna, WV-OH"
+375,18020,"Columbus, IN",Indiana,"85,729","84,942","82,213","3,516",4.3%,1,294,"Indianapolis-Carmel-Muncie, IN"
+376,24500,"Great Falls, MT",Montana,"85,029","84,668","84,410",619,0.7%,1,,
+377,29020,"Kokomo, IN",Indiana,"83,904","84,018","83,589",315,0.4%,1,294,"Indianapolis-Carmel-Muncie, IN"
+378,33220,"Midland, MI",Michigan,"83,754","83,768","83,488",266,0.3%,1,474,"Saginaw-Midland-Bay City, MI"
+379,16220,"Casper, WY",Wyoming,"80,526","80,271","80,299",227,0.3%,1,,
+380,21300,"Elmira, NY",New York,"80,415","80,837","83,652","-3,237",-3.9%,1,236,"Elmira-Corning, NY"
+381,24260,"Grand Island, NE",Nebraska,"78,076","78,273","76,910","1,166",1.5%,3,,
+382,33500,"Minot, ND",North Dakota,"75,694","75,649","77,522","-1,828",-2.4%,3,,
+383,30300,"Lewiston, ID-WA","Idaho, Washington","65,450","65,432","64,475",975,1.5%,2,,
+384,47460,"Walla Walla, WA",Washington,"62,361","62,109","62,620",-259,-0.4%,1,314,"Kennewick-Richland-Walla Walla, WA"
+385,21420,"Enid, OK",Oklahoma,"61,779","62,044","62,699",-920,-1.5%,1,,
+386,20580,"Eagle Pass, TX",Texas,"58,823","58,580","57,866",957,1.7%,1,,
+387,16180,"Carson City, NV",Nevada,"58,571","58,300","58,688",-117,-0.2%,1,456,"Reno-Carson City-Gardnerville Ranchos, NV-CA"
+388,10380,"Aguadilla, PR",Puerto Rico,,,,,,7,364,"Mayagüez-Aguadilla, PR"
+389,11640,"Arecibo, PR",Puerto Rico,,,,,,4,490,"San Juan-Bayamón, PR"
+390,25020,"Guayama, PR",Puerto Rico,,,,,,3,490,"San Juan-Bayamón, PR"
+391,32420,"Mayagüez, PR",Puerto Rico,,,,,,6,364,"Mayagüez-Aguadilla, PR"
+392,38660,"Ponce, PR",Puerto Rico,,,,,,6,434,"Ponce-Coamo, PR"
+393,41980,"San Juan-Bayamón-Caguas, PR",Puerto Rico,,,,,,40,490,"San Juan-Bayamón, PR"
