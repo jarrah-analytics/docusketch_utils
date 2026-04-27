@@ -198,7 +198,7 @@ def load_local_json(path: str):
     return pd.read_json(path, typ="series")
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=60)
 def load_master_leads(cbsa_code: str):
     client = get_bigquery_client()
     if client is None:
@@ -226,7 +226,7 @@ def load_master_leads(cbsa_code: str):
     return client.query(sql, job_config=job_config).to_dataframe()
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=60)
 def load_recent_runs(cbsa_code: str):
     client = get_bigquery_client()
     if client is None:
@@ -275,7 +275,7 @@ def build_state_regex(state_names: str) -> str:
     return r"(^|[^a-z])(" + "|".join(escaped) + r")([^a-z]|$)"
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=60)
 def load_linkedin_people_matches(cbsa_code: str, state_names: str):
     client = get_bigquery_client()
     if client is None:
@@ -385,7 +385,7 @@ def flatten_pdl_people_results(payload: dict, cbsa_code: str):
     return pd.DataFrame(rows)
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=60)
 def load_pdl_people_matches_bq(cbsa_code: str):
     client = get_bigquery_client()
     if client is None:
