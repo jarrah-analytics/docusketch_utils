@@ -427,11 +427,31 @@ def render_review_panel():
     selected_label = st.selectbox(
         "Metro Area",
         options=metros["label"].tolist(),
+        index=None,
+        placeholder="Type to search metro areas",
         key="review_metro",
     )
+    if not selected_label:
+        st.info("Select a metro area to review.")
+        return
     selected_metro = metros.loc[metros["label"] == selected_label].iloc[0]
 
     master_df = load_master_leads(selected_metro["CBSA Code"])
+    query_options = sorted(
+        [
+            query
+            for query in master_df.get("latest_search_query", pd.Series(dtype=str)).fillna("").unique().tolist()
+            if query
+        ]
+    ) if not master_df.empty else []
+    selected_query = st.selectbox(
+        "Latest Search Query Filter",
+        options=["All queries", *query_options],
+        index=0,
+        key="review_query_filter",
+    )
+    if selected_query != "All queries" and not master_df.empty and "latest_search_query" in master_df.columns:
+        master_df = master_df[master_df["latest_search_query"] == selected_query].copy()
     st.subheader("Master Metro Area Leads List")
     if master_df.empty:
         st.info("No master-list rows found yet for this metro in BigQuery.")
@@ -452,6 +472,8 @@ def render_review_panel():
             selected_metro["CBSA Code"],
             selected_metro.get("State(s)", ""),
         )
+        if selected_query != "All queries":
+            linkedin_df = linkedin_df[linkedin_df["company_name"].isin(set(master_df["company_name"]))].copy()
         st.subheader("LinkedIn People Matches")
         st.caption("Best-effort matches from the Bright Data LinkedIn dataset based on company-name matching plus state filtering.")
         if linkedin_df.empty:
@@ -467,6 +489,8 @@ def render_review_panel():
             st.dataframe(linkedin_df, use_container_width=True, hide_index=True)
 
         pdl_df, pdl_file = load_pdl_people_matches(selected_metro["CBSA Code"])
+        if selected_query != "All queries" and not pdl_df.empty:
+            pdl_df = pdl_df[pdl_df["company_name"].isin(set(master_df["company_name"]))].copy()
         st.subheader("PDL People Matches")
         st.caption("PDL people enrichment published from local runs into BigQuery. Local JSON fallback is still available for debugging.")
         if pdl_df.empty:
@@ -504,8 +528,13 @@ def render_debug_panel():
     selected_label = st.selectbox(
         "Metro Area",
         options=metros["label"].tolist(),
+        index=None,
+        placeholder="Type to search metro areas",
         key="debug_metro",
     )
+    if not selected_label:
+        st.info("Select a metro area to inspect debug output.")
+        return
     selected_metro = metros.loc[metros["label"] == selected_label].iloc[0]
 
     st.subheader("Selected Run")
@@ -515,8 +544,13 @@ def render_debug_panel():
     selected_name = st.selectbox(
         "Review file",
         options=file_options["name"].tolist(),
+        index=None,
+        placeholder="Type to search run files",
         key="review_file",
     )
+    if not selected_name:
+        st.info("Select a run file to inspect.")
+        return
     selected_row = file_options.loc[file_options["name"] == selected_name].iloc[0]
     df = load_local_csv(selected_row["path"])
 
@@ -549,15 +583,37 @@ def render_export_panel():
     selected_label = st.selectbox(
         "Metro Area to export",
         options=metros["label"].tolist(),
+        index=None,
+        placeholder="Type to search metro areas",
         key="export_metro",
     )
+    if not selected_label:
+        st.info("Select a metro area to export.")
+        return
     selected_metro = metros.loc[metros["label"] == selected_label].iloc[0]
     master_df = load_master_leads(selected_metro["CBSA Code"])
-    linkedin_df = load_linkedin_people_matches(
-        selected_metro["CBSA Code"],
-        selected_metro.get("State(s)", ""),
+    query_options = sorted(
+        [
+            query
+            for query in master_df.get("latest_search_query", pd.Series(dtype=str)).fillna("").unique().tolist()
+            if query
+        ]
+    ) if not master_df.empty else []
+    selected_query = st.selectbox(
+        "Latest Search Query Filter",
+        options=["All queries", *query_options],
+        index=0,
+        key="export_query_filter",
     )
+    if selected_query != "All queries" and not master_df.empty and "latest_search_query" in master_df.columns:
+        master_df = master_df[master_df["latest_search_query"] == selected_query].copy()
+
+    linkedin_df = load_linkedin_people_matches(selected_metro["CBSA Code"], selected_metro.get("State(s)", ""))
+    if selected_query != "All queries" and not linkedin_df.empty:
+        linkedin_df = linkedin_df[linkedin_df["company_name"].isin(set(master_df["company_name"]))].copy()
     pdl_df, pdl_source = load_pdl_people_matches(selected_metro["CBSA Code"])
+    if selected_query != "All queries" and not pdl_df.empty:
+        pdl_df = pdl_df[pdl_df["company_name"].isin(set(master_df["company_name"]))].copy()
 
     if master_df.empty:
         st.info("No BigQuery master-list rows found yet for this metro.")
@@ -623,8 +679,13 @@ def render_export_panel():
     selected_name = st.selectbox(
         "Export file",
         options=inventory["name"].tolist(),
+        index=None,
+        placeholder="Type to search run files",
         key="export_file",
     )
+    if not selected_name:
+        st.info("Select a run file to export.")
+        return
     selected_row = inventory.loc[inventory["name"] == selected_name].iloc[0]
     path = Path(selected_row["path"])
 
