@@ -833,6 +833,11 @@ tab1, tab2 = st.tabs(["Metro Extraction", "Live Weather Map"])
 with tab1:
     st.subheader("Build or Refresh a Metro Area Leads List")
     st.caption("Internal admin tool for metro-wide lead harvesting, review, and master-list building.")
+    st.caption(
+        "Blocked companies excluded from scraper results: ServiceMaster, Paul Davis, SERVPRO, "
+        "Pillar To Post, Insurcomm, Restoration 1, PuroClean, 911 Restoration, State Farm, "
+        "Allstate, Nationwide, DKI, SMTRS, and SMBY."
+    )
     workflow_tab1, workflow_tab2, workflow_tab3, workflow_tab4 = st.tabs(["Run", "Review", "Export", "Debug"])
 
     with workflow_tab1:
