@@ -456,16 +456,7 @@ def render_review_panel():
     if master_df.empty:
         st.info("No master-list rows found yet for this metro in BigQuery.")
     else:
-        top_col1, top_col2, top_col3 = st.columns(3)
-        with top_col1:
-            st.metric("Master Rows", len(master_df))
-        with top_col2:
-            sites = int(master_df["company_website"].fillna("").ne("").sum()) if "company_website" in master_df else 0
-            st.metric("With Website", sites)
-        with top_col3:
-            phones = int(master_df["website_phone"].fillna("").ne("").sum()) if "website_phone" in master_df else 0
-            st.metric("With Phone", phones)
-
+        st.caption(f"Master rows: {len(master_df)}")
         st.dataframe(master_df, use_container_width=True, hide_index=True)
 
         linkedin_df = load_linkedin_people_matches(
@@ -479,13 +470,7 @@ def render_review_panel():
         if linkedin_df.empty:
             st.info("No LinkedIn people matches found yet for this metro.")
         else:
-            match_col1, match_col2, match_col3 = st.columns(3)
-            with match_col1:
-                st.metric("Matched People", len(linkedin_df))
-            with match_col2:
-                st.metric("Matched Companies", linkedin_df["company_name"].nunique())
-            with match_col3:
-                st.metric("With Email", int(linkedin_df["email"].fillna("").ne("").sum()))
+            st.caption(f"Matched people: {len(linkedin_df)}")
             st.dataframe(linkedin_df, use_container_width=True, hide_index=True)
 
         pdl_df, pdl_file = load_pdl_people_matches(selected_metro["CBSA Code"])
@@ -496,13 +481,7 @@ def render_review_panel():
         if pdl_df.empty:
             st.info("No PDL people matches found yet for this metro.")
         else:
-            pdl_col1, pdl_col2, pdl_col3 = st.columns(3)
-            with pdl_col1:
-                st.metric("Matched People", len(pdl_df))
-            with pdl_col2:
-                st.metric("Matched Companies", pdl_df["company_name"].nunique())
-            with pdl_col3:
-                st.metric("With LinkedIn URL", int(pdl_df["linkedin_url"].fillna("").ne("").sum()) if "linkedin_url" in pdl_df else 0)
+            st.caption(f"Matched people: {len(pdl_df)}")
             if isinstance(pdl_file, dict) and pdl_file.get("source") == "bigquery":
                 if "uploaded_at_utc" in pdl_df and not pdl_df["uploaded_at_utc"].empty:
                     latest_upload = pd.to_datetime(pdl_df["uploaded_at_utc"]).max()
