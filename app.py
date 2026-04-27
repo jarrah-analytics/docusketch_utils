@@ -226,6 +226,34 @@ def load_master_leads(cbsa_code: str):
     return client.query(sql, job_config=job_config).to_dataframe()
 
 
+@st.cache_data(show_spinner=False)
+def load_recent_runs(cbsa_code: str):
+    client = get_bigquery_client()
+    if client is None:
+        return pd.DataFrame()
+
+    sql = f"""
+        SELECT
+          run_id,
+          run_started_at_utc,
+          search_query,
+          rows_total_returned,
+          rows_new_added_to_index,
+          rows_existing_returned,
+          full_scan,
+          index_key,
+          result_file_uri
+        FROM `{BQ_PROJECT_ID}.{BQ_DATASET}.lead_runs_raw`
+        WHERE cbsa_code = @cbsa_code
+        ORDER BY run_started_at_utc DESC
+        LIMIT 50
+    """
+    job_config = bigquery.QueryJobConfig(
+        query_parameters=[bigquery.ScalarQueryParameter("cbsa_code", "STRING", cbsa_code)]
+    )
+    return client.query(sql, job_config=job_config).to_dataframe()
+
+
 def dataframe_to_csv_bytes(df: pd.DataFrame) -> bytes:
     return df.to_csv(index=False).encode("utf-8")
 
@@ -495,13 +523,9 @@ def render_review_panel():
             st.dataframe(pdl_df, use_container_width=True, hide_index=True)
 
 def render_debug_panel():
-    inventory = load_local_output_inventory()
     metros = load_metro_options()
     if metros.empty:
         st.info("Metro metadata is unavailable.")
-        return
-    if inventory.empty:
-        st.info("No local extraction files yet.")
         return
 
     selected_label = st.selectbox(
@@ -515,6 +539,73 @@ def render_debug_panel():
         st.info("Select a metro area to inspect debug output.")
         return
     selected_metro = metros.loc[metros["label"] == selected_label].iloc[0]
+
+    st.subheader("Recent Metro Runs")
+    recent_runs = load_recent_runs(selected_metro["CBSA Code"])
+    if recent_runs.empty:
+        st.info("No BigQuery run history found yet for this metro.")
+    else:
+        recent_runs = recent_runs.copy()
+        recent_runs["run_label"] = recent_runs.apply(
+            lambda row: (
+                f"{row['run_started_at_utc']} | "
+                f"{row.get('search_query', '') or 'No query'} | "
+                f"{int(row.get('rows_total_returned', 0) or 0)} rows | "
+                f"{row['run_id']}"
+            ),
+            axis=1,
+        )
+        st.dataframe(
+            recent_runs[
+                [
+                    "run_started_at_utc",
+                    "search_query",
+                    "rows_total_returned",
+                    "rows_new_added_to_index",
+                    "rows_existing_returned",
+                    "full_scan",
+                    "index_key",
+                    "run_id",
+                ]
+            ],
+            use_container_width=True,
+            hide_index=True,
+        )
+        selected_run_label = st.selectbox(
+            "Run to delete",
+            options=recent_runs["run_label"].tolist(),
+            index=None,
+            placeholder="Type to search recent runs",
+            key="delete_run_label",
+        )
+        confirm_delete = st.checkbox(
+            "I understand this deletes the selected run from BigQuery and rebuilds the metro master list/index.",
+            key="confirm_delete_run",
+        )
+        if st.button("Delete Selected Run"):
+            if not selected_run_label:
+                st.error("Select a run first.")
+            elif not confirm_delete:
+                st.error("Confirm the delete checkbox before deleting a run.")
+            else:
+                selected_run = recent_runs.loc[recent_runs["run_label"] == selected_run_label].iloc[0]
+                with st.spinner("Deleting run and rebuilding metro state..."):
+                    status_code, payload = delete_run_via_backend(str(selected_run["run_id"]))
+                if status_code == 200:
+                    st.success(
+                        f"Deleted run {payload.get('run_id')} "
+                        f"({payload.get('results_rows_deleted', 0)} result rows removed)."
+                    )
+                    st.json(payload)
+                    st.cache_data.clear()
+                    st.rerun()
+                else:
+                    st.error(f"Delete failed ({status_code}): {payload.get('message')}")
+
+    inventory = load_local_output_inventory()
+    if inventory.empty:
+        st.info("No local extraction files yet.")
+        return
 
     st.subheader("Selected Run")
     metro_file_options = inventory[inventory["name"].str.contains(selected_metro["CBSA Code"], case=False, regex=False)]
@@ -826,6 +917,17 @@ def handle_backend_response(payload: dict):
         )
 
 
+def delete_run_via_backend(run_id: str):
+    backend_url = get_backend_url()
+    token = "" if is_local_backend(backend_url) else fetch_id_token()
+    response = call_backend(token, {"action": "delete_run", "run_id": run_id}, timeout_s=120)
+    try:
+        data = response.json()
+    except Exception:
+        data = {"message": response.text}
+    return response.status_code, data
+
+
 # --- APP ---
 st.title("Metro Area Leads - Admin Console")
 tab1, tab2 = st.tabs(["Metro Extraction", "Live Weather Map"])
@@ -952,10 +1054,7 @@ Google charges per search request/page, not per lead.
 
     with workflow_tab4:
         st.subheader("Debug")
-        if is_local_mode():
-            render_debug_panel()
-        else:
-            st.info("Hosted debug UX can come next. Local debug is available in local mode.")
+        render_debug_panel()
 
 with tab2:
     st.header("Extreme Weather Tracker")
